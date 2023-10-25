@@ -6,6 +6,7 @@ public class HoaDon {
     private String maNhanVien;
     private String maKhachHang;
     private double tongTien;
+    private String Hoten;
     
 public HoaDon(String maHoaDon, String ngay, String maNhanVien, String maKhachHang, double tongTien) {
         this.maHoaDon = maHoaDon;
