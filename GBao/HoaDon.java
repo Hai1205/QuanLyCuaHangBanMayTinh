@@ -7,7 +7,15 @@ public class HoaDon {
     private String maKhachHang;
     private double tongTien;
 
-public HoaDon(String maHoaDon, String ngay, String maNhanVien, String maKhachHang, double tongTien) {
+    public HoaDon() {
+        this.maHoaDon = "Unknown";
+        this.ngay = "Unknown";
+        this.maNhanVien = "Unknown";
+        this.maKhachHang = "Unknown";
+        this.tongTien = 0;
+    }
+
+    public HoaDon(String maHoaDon, String ngay, String maNhanVien, String maKhachHang, double tongTien) {
         this.maHoaDon = maHoaDon;
         this.ngay = ngay;
         this.maNhanVien = maNhanVien;
