@@ -6,8 +6,8 @@ public class HoaDon {
     private String maNhanVien;
     private String maKhachHang;
     private double tongTien;
-
-    public HoaDon(String maHoaDon, String ngay, String maNhanVien, String maKhachHang, double tongTien) {
+    
+public HoaDon(String maHoaDon, String ngay, String maNhanVien, String maKhachHang, double tongTien) {
         this.maHoaDon = maHoaDon;
         this.ngay = ngay;
         this.maNhanVien = maNhanVien;
