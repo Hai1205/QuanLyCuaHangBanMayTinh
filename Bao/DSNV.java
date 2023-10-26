@@ -1,57 +1,69 @@
 import java.util.Scanner;
 
- public class DSNV {
+public class DSNV {
     private NhanVien[] danhSach;
-    private int soLuong;
 
-    public DSNV(int soLuong) {
-        this.soLuong = 0;
-        danhSach = new NhanVien[soLuong];
+    public DSNV() {
+        danhSach = new NhanVien[0];
     }
 
-
-   public void them(NhanVien nv){
-    if (soLuong < danhSach.length){
-        danhSach[soLuong] = nv;
-        soLuong++;
-    }
-   }
-
-   public void xoa(int viTri){
-    if (viTri >= 0 && viTri < soLuong){
-        for (int i = viTri; i < soLuong; i++){
-            danhSach[i] = danhSach[i+1];
+    public void them(NhanVien nv) {
+        int size = danhSach.length;
+        NhanVien[] temp = new NhanVien[size + 1];
+        for (int i = 0; i < size; i++) {
+            temp[i] = danhSach[i];
         }
-        soLuong--;
+        temp[size] = nv;
+        danhSach = temp;
     }
-   }
 
-   public void sua(int viTri, NhanVien nv){
-        if (viTri >=0 && viTri < soLuong){
-            danhSach [viTri] = nv;
-        }
-   }
-
-   public NhanVien timkiem(String maNv){
-    for (int i=0; i< soLuong; i++){
-        if (danhSach[i] != null && danhSach[i].getMaNV().equals(maNv)){
-            return danhSach[i];
+    public void xoa(NhanVien nv) {
+        int index = timViTri(nv);
+        if (index != -1) {
+            int size = danhSach.length - 1;
+            NhanVien[] temp = new NhanVien[size];
+            for (int i = 0; i < index; i++) {
+                temp[i] = danhSach[i];
+            }
+            for (int i = index + 1; i < size + 1; i++) {
+                temp[i - 1] = danhSach[i];
+            }
+            danhSach = temp;
         }
     }
-    return null;
-   }
 
+    public void sua(NhanVien nv, NhanVien nvMoi) {
+        int index = timViTri(nv);
+        if (index != -1) {
+            danhSach[index] = nvMoi;
+        }
+    }
 
-    public void xuatdanhsach(){
-        for (int i=0; i<soLuong; i++){
-            if (danhSach[i] != null){
-                danhSach[i].xuat();
+    public NhanVien timkiem(String maNv) {
+        for (NhanVien nv : danhSach) {
+            if (nv.getMaNV().equals(maNv)) {
+                return nv;
             }
         }
+        return null;
     }
 
+    public void xuatdanhsach() {
+        for (NhanVien nv : danhSach) {
+            nv.xuat();
+        }
+    }
 
-    public void QuanLiNhanVien(){
+    private int timViTri(NhanVien nv) {
+        for (int i = 0; i < danhSach.length; i++) {
+            if (danhSach[i].getMaNV().equals(nv.getMaNV())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void QuanLiNhanVien() {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("==== Quan Li Nhan Vien ====");
@@ -62,9 +74,9 @@ import java.util.Scanner;
             System.out.println("5. Hien Thi Danh Sach Nhan Vien");
             System.out.println("6. Thoat");
             System.out.print("Nhap lua chon cua ban: ");
-            
+    
             int luaChon = sc.nextInt();
-
+    
             switch (luaChon) {
                 case 1:
                     NhanVien nv = new NhanVien();
@@ -72,37 +84,39 @@ import java.util.Scanner;
                     them(nv);
                     break;
                 case 2:
-                   System.out.println("Nhap ma nhan vien can xoa: ");
-                   String maNhanVien1 = sc.next();
-                   for (int i=0; i< soLuong; i++){
-                    if (danhSach[i] != null && danhSach[i].getMaNV().equals(maNhanVien1)){
-                        xoa(i);
+                    System.out.println("Nhap ma nhan vien can sua: ");
+                    String maNhanVien = sc.next();
+                    NhanVien nvSua = timkiem(maNhanVien);
+                    if (nvSua != null) {
+                        NhanVien nvMoi = new NhanVien();
+                        nvMoi.nhap();
+                        sua(nvSua, nvMoi);
+                    } else {
+                        System.out.println("Khong tim thay nhan vien: " + maNhanVien);
                     }
-                   }
                     break;
                 case 3:
-                   System.out.println("Nhap ma nhan vien can sua: ");
-                   String maNhanVien2 = sc.next();
-                   for (int i = 0; i < soLuong; i++){
-                    if (danhSach[i] != null && danhSach[i].getMaNV().equals(maNhanVien2)){
-                        NhanVien suaNhanVien = new NhanVien();
-                        suaNhanVien.nhap();
-                        sua(i, suaNhanVien);
+                    System.out.println("Nhap ma nhan vien can xoa: ");
+                    String maNhanVienXoa = sc.next();
+                    NhanVien nvXoa = timkiem(maNhanVienXoa);
+                    if (nvXoa != null) {
+                        xoa(nvXoa);
+                    } else {
+                        System.out.println("Khong tim thay nhan vien: " + maNhanVienXoa);
                     }
-                   }
                     break;
                 case 4:
                     System.out.println("Nhap ma nhan vien can tim: ");
-                    String maNhanVien3 = sc.next();
-                    NhanVien timkiemNV = timkiem(maNhanVien3);
-                if (timkiemNV != null) {
-                    timkiemNV.xuat();
-                } else {
-                    System.out.println("Khong tim thay nhan vien: " + maNhanVien3);
-                }
-                break;
-                case 5:
-                   xuatdanhsach();
+                    String maNhanVienCanTim = sc.next();
+                    NhanVien timnv = timkiem(maNhanVienCanTim);
+                    if (timnv != null) {
+                        timkiem(maNhanVienCanTim);
+                    } else {
+                        System.out.println("Khong tim thay nhan vien: " + maNhanVienCanTim);
+                    }
+                    break;
+                case 5: 
+                    xuatdanhsach();
                     break;
                 case 6:
                     System.out.println("Ket thuc chuong trinh.");
@@ -114,5 +128,5 @@ import java.util.Scanner;
             }
         }
     }
-    }
-
+}
+    
