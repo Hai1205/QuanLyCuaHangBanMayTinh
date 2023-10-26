@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class NhanVien {
@@ -17,31 +16,30 @@ public class NhanVien {
     }
     
     public NhanVien(String maNv, String ho, String ten, String ngaysinh, long luong) {
+        setMaNV(maNv)
+        setHo(ho);
+        setTen(ten);
+        setNgaySinh(ngaysinh);
+        setLuong(luong);
+    }
+
+    public void setMaNV(String maNv) {
         this.maNv = maNv;
-        this.ho = ho;
-        this.ten = ten;
-        this.ngaysinh = ngaysinh;
-        this.luong = luong;
-
     }
 
-    public void setMaHoaDon(String maNv) {
-        this.maNv = maNv;
-    }
-
-    public void setNgay(String ho) {
+    public void setHo(String ho) {
         this.ho = ho;
     }
 
-    public void setMaNhanVien(String ten) {
+    public void setTen(String ten) {
         this.ten = ten;
     }
 
-    public void setMaKhachHang(String ngaysinh) {
+    public void setNgaySinh(String ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 
-    public void setTongTien(long luong) {
+    public void setLuong(long luong) {
         this.luong = luong;
     }
 
