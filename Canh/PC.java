@@ -3,22 +3,22 @@ import java.util.Scanner;
 public class PC extends SanPham {
     private String hangManHinh;
 
-    public PC(String maSanPham, String tenSanPham, int soLuong, double donGia, String donViTinh, String hangManHinh) {
-        super(maSanPham, tenSanPham, soLuong, donGia, donViTinh);
+    public PC(String MaSP, String Ten, int SLCL, double DG, String DVT, String hangManHinh) {
+        super(MaSP, Ten, SLCL, DG, DVT);
         this.hangManHinh = hangManHinh;
     }
 
     @Override
-    public void nhapThongTin() {
-        super.nhapThongTin();
+    public void Nhap() {
+        super.Nhap();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap hang man hinh: ");
         hangManHinh = scanner.nextLine();
     }
 
     @Override
-    public void xuatThongTin() {
-        super.xuatThongTin();
+    public void Xuat() {
+        super.Xuat();
         System.out.println("Hang man hinh: " + hangManHinh);
     }
 }

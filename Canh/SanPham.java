@@ -1,85 +1,81 @@
 import java.util.Scanner;
 
-public class SanPham {
-    private String maSanPham;
-    private String tenSanPham;
-    private int soLuong;
-    private double donGia;
-    private String donViTinh;
+public abstract class SanPham {
+    private String MaSP;
+    private String Ten;
+    private int SLCL;
+    private double DG;
+    private String DVT;
 
-    public SanPham(String maSanPham, String tenSanPham, int soLuong, double donGia, String donViTinh) {
-        this.maSanPham = maSanPham;
-        this.tenSanPham = tenSanPham;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-        this.donViTinh = donViTinh;
+    public SanPham(String MaSP, String Ten, int SLCL, double DG, String DVT) {
+        this.MaSP = MaSP;
+        this.Ten = Ten;
+        this.SLCL = SLCL;
+        this.DG = DG;
+        this.DVT = DVT;
     }
 
-    // Getter và setter cho maSanPham
-    public String getMaSanPham() {
-        return maSanPham;
+    public String getMaSP() {
+        return MaSP;
     }
 
-    public void setMaSanPham(String maSanPham) {
-        this.maSanPham = maSanPham;
+    public void setMaSP(String MaSP) {
+        this.MaSP = MaSP;
     }
 
-    // Getter và setter cho tenSanPham
-    public String getTenSanPham() {
-        return tenSanPham;
+    public String getTen() {
+        return Ten;
     }
 
-    public void setTenSanPham(String tenSanPham) {
-        this.tenSanPham = tenSanPham;
+    public void setTen(String Ten) {
+        this.Ten = Ten;
     }
 
-    // Getter và setter cho soLuong
-    public int getSoLuong() {
-        return soLuong;
+    public int getSL() {
+        return SLCL;
     }
 
-    public void setSoLuong(int soLuong) {
-        this.soLuong = soLuong;
+    public void setSL(int SLCL) {
+        this.SLCL = SLCL;
     }
 
-    // Getter và setter cho donGia
-    public double getDonGia() {
-        return donGia;
+    public double getDG() {
+        return DG;
     }
 
-    public void setDonGia(double donGia) {
-        this.donGia = donGia;
+    public void setDG(double DG) {
+        this.DG = DG;
     }
 
-    // Getter và setter cho donViTinh
-    public String getDonViTinh() {
-        return donViTinh;
+    public String getDVT() {
+        return DVT;
     }
 
-    public void setDonViTinh(String donViTinh) {
-        this.donViTinh = donViTinh;
+    public void setDVT(String DVT) {
+        this.DVT = DVT;
     }
 
-     public void nhapThongTin() {
+    public void Nhap() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap ma san pham: ");
-        maSanPham = scanner.nextLine();
+        MaSP = scanner.nextLine();
         System.out.print("Nhap ten san pham: ");
-        tenSanPham = scanner.nextLine();
+        Ten = scanner.nextLine();
         System.out.print("Nhap so luong: ");
-        soLuong = scanner.nextInt();
+        SLCL = scanner.nextInt();
         System.out.print("Nhap don gia: ");
-        donGia = scanner.nextDouble();
-        scanner.nextLine(); // Thêm dòng này để xử lý việc đọc dòng trống
+        DG = scanner.nextDouble();
+        scanner.nextLine();
         System.out.print("Nhap don vi tinh: ");
-        donViTinh = scanner.nextLine();
+        DVT = scanner.nextLine();
     }
 
-    public void xuatThongTin() {
-        System.out.println("Ma san pham: " + maSanPham);
-        System.out.println("Ten san pham: " + tenSanPham);
-        System.out.println("So luong: " + soLuong);
-        System.out.println("Don gia: " + donGia);
-        System.out.println("Don vi tinh: " + donViTinh);
+    public void Xuat() {
+        System.out.println("Ma san pham: " + MaSP);
+        System.out.println("Ten san pham: " + Ten);
+        System.out.println("So luong: " + SLCL);
+        System.out.println("Don gia: " + DG);
+        System.out.println("Don vi tinh: " + DVT);
     }
+
 }
