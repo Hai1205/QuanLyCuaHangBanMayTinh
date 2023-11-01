@@ -16,7 +16,7 @@ public class NhanVien {
     }
     
     public NhanVien(String maNv, String ho, String ten, String ngaysinh, long luong) {
-        setMaNV(maNv)
+        setMaNV(maNv);
         setHo(ho);
         setTen(ten);
         setNgaySinh(ngaysinh);
@@ -81,7 +81,7 @@ public class NhanVien {
     public void xuat(){
         System.out.println("Ma nhan vien: " + maNv);
         System.out.println("Ho nhan vien: "+ ho);
-        System.out.println("Ten sinh vien: " + ten);
+        System.out.println("Ten nhan vien: " + ten);
         System.out.println("Ngay sinh nhan vien: "+ ngaysinh);
         System.out.println("Luong nhan vien la: " + luong);
     }

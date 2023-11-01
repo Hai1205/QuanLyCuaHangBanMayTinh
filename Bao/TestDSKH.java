@@ -1,7 +1,8 @@
-class TestDSNV {
+class TestDSKH {
 
     public static void main(String[] args) {
-        MenuNV ds = new MenuNV();
+        MenuKH ds = new MenuKH();
         ds.MENU();
     }
 }
+
