@@ -78,10 +78,13 @@ public class HoaDon {
         System.out.print("Nhap ma khach hang: ");
         setMaKhachHang(scanner.nextLine());
 
-        System.out.print("Nhap tong tien: ");
-        setTongTien(scanner.nextDouble());
     }
 
+    public void capNhatTongTien(DSChiTietHoaDon dscthd) {
+        this.tongTien = dscthd.tinhTongThanhTien();
+    }
+    
+    
     public void xuat() {
         System.out.println("Ma hoa don: " + getMaHoaDon());
         System.out.println("Ngay: " + getNgay());
