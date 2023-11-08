@@ -1,0 +1,2 @@
+123, 16 GB, Core i7, 512GB, RTX 3070, Window 11, zxc, MSI", "2022
+456, 8 GB, Apple M1, 256 GB, card tich hop, Mac OS, vbn, Apple, 2020
