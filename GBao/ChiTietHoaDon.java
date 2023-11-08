@@ -22,7 +22,7 @@ public class ChiTietHoaDon {
         this.maSanPham = maSanPham;
         this.soLuongMua = soLuongMua;
         this.donGia = donGia;
-        this.thanhTien = thanhTien;
+        this.thanhTien = soLuongMua * donGia;
         this.maBaoHanh = maBaoHanh;
     }
 
@@ -85,12 +85,6 @@ public class ChiTietHoaDon {
 
         System.out.print("Nhap so luong mua: ");
         setSoLuongMua(scanner.nextInt());
-
-        System.out.print("Nhap don gia: ");
-        setDonGia(scanner.nextDouble());
-
-        System.out.print("Nhap thanh tien: ");
-        setThanhTien(scanner.nextDouble());
         scanner.nextLine(); 
         
         System.out.print("Nhap ma bao hanh: ");
