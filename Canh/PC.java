@@ -8,6 +8,10 @@ public class PC extends SanPham {
         this.hangManHinh = hangManHinh;
     }
 
+    public String getHangManHinh() {
+        return this.hangManHinh;
+    }
+
     @Override
     public void Nhap() {
         super.Nhap();

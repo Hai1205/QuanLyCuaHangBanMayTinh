@@ -8,11 +8,11 @@ public abstract class SanPham {
     private String DVT;
 
     public SanPham(String MaSP, String Ten, int SLCL, double DG, String DVT) {
-        this.MaSP = MaSP;
-        this.Ten = Ten;
-        this.SLCL = SLCL;
-        this.DG = DG;
-        this.DVT = DVT;
+        setMaSP(MaSP);
+        setTen(Ten);
+        setSL(SLCL);
+        setDG(DG);
+        setDVT(DVT);
     }
 
     public String getMaSP() {
@@ -77,5 +77,4 @@ public abstract class SanPham {
         System.out.println("Don gia: " + DG);
         System.out.println("Don vi tinh: " + DVT);
     }
-
 }

@@ -16,7 +16,7 @@ public class LapTop extends SanPham {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap dung luong pin: ");
         pin = scanner.nextInt();
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.print("Nhap style nguoi dung: ");
         styleNguoiDung = scanner.nextLine();
     }
@@ -26,5 +26,13 @@ public class LapTop extends SanPham {
         super.Xuat();
         System.out.println("Dung luong pin: " + pin);
         System.out.println("Style nguoi dung: " + styleNguoiDung);
+    }
+
+    public int getPin() {
+        return this.pin;
+    }
+
+    public String getStyleNguoiDung() {
+        return this.styleNguoiDung;
     }
 }

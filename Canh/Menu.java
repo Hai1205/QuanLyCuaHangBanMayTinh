@@ -16,15 +16,17 @@ public class Menu {
             System.out.println("1. Nhap danh sach san pham");
             System.out.println("2. Hien thi danh sach san pham");
             System.out.println("3. Them san pham");
-            System.out.println("4. Cap nhat thong tin san pham");
+            System.out.println("4. Sua thong tin san pham");
             System.out.println("5. Xoa san pham");
             System.out.println("6. Tim kiem san pham");
-            System.out.println("7. Thong ke theo MaSP");
+            System.out.println("7. Thong ke san pham");
+           // System.out.println("8. Ghi danh sach vao file");
+           // System.out.println("9. Doc danh sach tu file");
             System.out.println("0. Thoat");
 
             System.out.print("Nhap lua chon cua ban: ");
             luaChon = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             switch (luaChon) {
                 case 1:
@@ -37,7 +39,7 @@ public class Menu {
                     Them();
                     break;
                 case 4:
-                    capNhatSanPham();
+                    Sua();
                     break;
                 case 5:
                     Xoa();
@@ -48,6 +50,12 @@ public class Menu {
                 case 7:
                     danhSachSanPham.ThongKe();
                     break;
+               /*  case 8:
+                    GhiDanhSachVaoFile();
+                    break;
+                case 9:
+                    DocDanhSachTuFile();
+                    break; */
                 case 0:
                     System.out.println("Chuong trinh ket thuc.");
                     break;
@@ -58,53 +66,21 @@ public class Menu {
     }
 
     private void Them() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Chon loai san pham (1. Laptop / 2. PC): ");
-        int loaiSanPham = scanner.nextInt();
-        scanner.nextLine();  
-
-        System.out.println("Loai san pham duoc chon: " + loaiSanPham);
-
-        if (loaiSanPham == 1) {
-            LapTop laptop = new LapTop("", "", 0, 0, "", 0, "");
-            laptop.Nhap();
-            danhSachSanPham.Them(laptop);
-        } else if (loaiSanPham == 2) {
-            PC pc = new PC("", "", 0, 0, "", "");
-            pc.Nhap();
-            danhSachSanPham.Them(pc);
-        } else {
-            System.out.println("Lua chon khong hop le.");
-        }
+        danhSachSanPham.Nhap();
     }
-
-    private void capNhatSanPham() {
+    
+    private void Sua() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap ma san pham can cap nhat: ");
         String maSanPhamCanCapNhat = scanner.nextLine();
-
-        for (SanPham sanPham : danhSachSanPham.getDanhSach()) {
-            if (sanPham.getMaSP().equals(maSanPhamCanCapNhat)) {
-
-                System.out.println("Thong tin san pham can cap nhat:");
-                sanPham.Xuat();
-
-                System.out.println("Nhap thong tin moi cho san pham:");
-                if (sanPham instanceof LapTop) {
-                    LapTop laptopCapNhat = new LapTop("", "", 0, 0, "", 0, "");
-                    laptopCapNhat.Nhap();
-                    danhSachSanPham.Sua(maSanPhamCanCapNhat, laptopCapNhat);
-                } else if (sanPham instanceof PC) {
-                    PC pcCapNhat = new PC("", "", 0, 0, "", "");
-                    pcCapNhat.Nhap();
-                    danhSachSanPham.Sua(maSanPhamCanCapNhat, pcCapNhat);
-                }
-                return;
-            }
-        }
-
-        System.out.println("Khong tim thay san pham co ma: " + maSanPhamCanCapNhat);
+    
+        // Create a new instance of LapTop (you can modify this based on your hierarchy)
+        LapTop lapTopMoi = new LapTop("", "", 0, 0, "", 0, "");
+    
+        danhSachSanPham.Sua(maSanPhamCanCapNhat, lapTopMoi);
     }
+    
+
     private void Xoa() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap ma san pham can xoa: ");
@@ -114,8 +90,26 @@ public class Menu {
 
     private void TimKiem() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Nhap ma san pham can tim kiem: ");
-        String maSanPhamCanTimKiem = scanner.nextLine();
-        danhSachSanPham.TimKiem(maSanPhamCanTimKiem);
+        System.out.print("Nhap ten san pham can tim kiem: ");
+        String tenSanPhamCanTimKiem = scanner.nextLine();
+        danhSachSanPham.TimKiem(tenSanPhamCanTimKiem);
+    }
+
+  /*   private void GhiDanhSachVaoFile() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhap ten file de ghi danh sach: ");
+        String tenFile = scanner.nextLine();
+        danhSachSanPham.GhiDuLieuVaoFile(tenFile);
+    }
+
+    private void DocDanhSachTuFile() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhap ten file de doc danh sach: ");
+        String tenFile = scanner.nextLine();
+        danhSachSanPham.DocDuLieuTuFile(tenFile);
+    }
+    */
+    public void docDuLieuTuFile(String tenFile) {
+        danhSachSanPham.DocDuLieuTuFile(tenFile);
     }
 }
