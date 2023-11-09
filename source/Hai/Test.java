@@ -12,8 +12,8 @@ public class Test {
         // QLNSX c2 = new QLNSX(c1);
         // c2.menu();
 
-        // DSPNH d1 = new DSPNH();
-        // QLPNH d2 = new QLPNH(d1);
-        // d2.menu();
+        DSPNH d1 = new DSPNH();
+        QLPNH d2 = new QLPNH(d1);
+        d2.menu();
     }
 }
