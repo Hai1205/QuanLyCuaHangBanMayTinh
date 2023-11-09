@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class DSKH {
+
+public class DanhSachKhachHang {
     private KhachHang[] danhSach;
 
-    public DSKH() {
+    public DanhSachKhachHang() {
         danhSach = new KhachHang[0];
     }
 
@@ -39,9 +40,9 @@ public class DSKH {
         }
     }
 
-    public KhachHang timkiem(String maKH) {
+    public KhachHang timkiem(String maKhachHang) {
         for (KhachHang kh : danhSach) {
-            if (kh.getMaKH().equals(maKH)) {
+            if (kh.getMaKhachHang().equals(maKhachHang)) {
                 return kh;
             }
         }
@@ -56,10 +57,38 @@ public class DSKH {
 
     private int timViTri(KhachHang kh) {
         for (int i = 0; i < danhSach.length; i++) {
-            if (danhSach[i].getMaKH().equals(kh.getMaKH())) {
+            if (danhSach[i].getMaKhachHang().equals(kh.getMaKhachHang())) {
                 return i;
             }
         }
         return -1;
     }
+
+    public void hangThanhVien(KhachHang kh) {
+        DSHoaDon DanhSachHoaDon = new DSHoaDon();
+        double tongTien =   DanhSachHoaDon.getTongTien();
+        int soHoaDon = DanhSachHoaDon.getSoHoaDon(); 
+        
+        double voucher = 0; 
+
+        if (soHoaDon >= 3 || tongTien >= 3000000) {
+            if (soHoaDon >= 75 || tongTien >= 20000000) {
+                voucher = 0.4; // Voucher giảm 40%
+            } else if (soHoaDon >= 75 || tongTien >= 5000000) {
+                voucher = 0.2; // Voucher giảm 20%
+            } else if (soHoaDon >= 3 || tongTien >= 3000000) {
+                voucher = 0.1; // Voucher giảm 10%
+            }
+
+            // Áp dụng voucher giảm giá
+            double giamGia = tongTien * voucher;
+            double tongTienSauGiamGia = tongTien - giamGia;
+
+            System.out.println("Ưu đãi: được voucher giảm " + (voucher * 100) + "% giá trị đơn hàng");
+            System.out.println("Tổng tiền sau giảm giá: " + tongTienSauGiamGia);
+        } else {
+            System.out.println("Không đạt được hạng thành viên");
+        }
+    }
 }
+

@@ -1,7 +1,7 @@
 class TestDSKH {
 
     public static void main(String[] args) {
-        MenuKH ds = new MenuKH();
+        MenuKhachHang ds = new MenuKhachHang();
         ds.MENU();
     }
 }

@@ -1,7 +1,7 @@
 class TestDSNV {
 
     public static void main(String[] args) {
-        MenuNV ds = new MenuNV();
+        MenuNhanVien ds = new MenuNhanVien();
         ds.MENU();
     }
 }

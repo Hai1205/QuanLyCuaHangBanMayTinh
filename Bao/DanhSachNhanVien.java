@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-public class DSNV {
-    private NhanVien[] danhSach;
+public class DanhSachNhanVien {
+    
+    public NhanVien[] danhSach;
 
-    public DSNV() {
+    public DanhSachNhanVien() {
         danhSach = new NhanVien[0];
     }
 
@@ -39,9 +40,9 @@ public class DSNV {
         }
     }
 
-    public NhanVien timkiem(String maNv) {
+    public NhanVien timkiem(String maNhanVien) {
         for (NhanVien nv : danhSach) {
-            if (nv.getMaNV().equals(maNv)) {
+            if (nv.getMaNhanVien().equals(maNhanVien)) {
                 return nv;
             }
         }
@@ -56,10 +57,24 @@ public class DSNV {
 
     private int timViTri(NhanVien nv) {
         for (int i = 0; i < danhSach.length; i++) {
-            if (danhSach[i].getMaNV().equals(nv.getMaNV())) {
+            if (danhSach[i].getMaNhanVien().equals(nv.getMaNhanVien())) {
                 return i;
             }
         }
         return -1;
     }
+
+    public void thuongLuong(NhanVien nv) {
+        DSHoaDon DanhSachHoaDon = new DSHoaDon();
+        int soHoaDon = DanhSachHoaDon.getSoHoaDon(); 
+        if (soHoaDon >= 3 && soHoaDon < 5) {
+            long thuong = (long) (nv.getLuong() * 0.1);
+            nv.setLuong(nv.getLuong() + thuong);
+        } else if (soHoaDon >= 5) {
+            long thuong = (long) (nv.getLuong() * 0.1);
+            nv.setLuong(nv.getLuong() + thuong);
+        }
+    }
+    
+    
 }
