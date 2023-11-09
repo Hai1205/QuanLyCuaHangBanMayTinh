@@ -4,8 +4,6 @@ public class test {
         Menu menu = new Menu();
 
         SanPham sp1 = new LapTop("1", "Laptop Acer", 5, 800, "Chiec", 6500, "GM");
-        SanPham sp16 = new LapTop("16", "Laptop Acer", 5, 4600, "Chiec", 6500, "GM");
-
         SanPham sp2 = new PC("2", "PC Gaming", 3, 1500, "Bo", "LG");
         SanPham sp3 = new LapTop("3", "Dell XPS", 2, 1200, "Chiec", 6500, "GM");
         SanPham sp4 = new PC("4", "PC Workstation", 1, 2500, "Bo", "MS");
@@ -20,7 +18,8 @@ public class test {
         SanPham sp13 = new LapTop("13", "Surface Laptop", 4, 1500, "Chiec", 1250, "GM");
         SanPham sp14 = new PC("14", "PC Server", 1, 3000, "Bo", "ETG");
         SanPham sp15 = new LapTop("15", "MSI Gaming Laptop", 6, 1800, "Chiec", 1200, "GM");
-
+        SanPham sp16 = new LapTop("16", "Laptop Acer", 5, 4600, "Chiec", 6500, "GM");
+        
         danhSachSanPham.Them(sp1);
         danhSachSanPham.Them(sp2);
         danhSachSanPham.Them(sp3);
