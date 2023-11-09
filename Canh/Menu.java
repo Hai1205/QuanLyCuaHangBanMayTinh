@@ -74,7 +74,6 @@ public class Menu {
         System.out.print("Nhap ma san pham can cap nhat: ");
         String maSanPhamCanCapNhat = scanner.nextLine();
     
-        // Create a new instance of LapTop (you can modify this based on your hierarchy)
         LapTop lapTopMoi = new LapTop("", "", 0, 0, "", 0, "");
     
         danhSachSanPham.Sua(maSanPhamCanCapNhat, lapTopMoi);

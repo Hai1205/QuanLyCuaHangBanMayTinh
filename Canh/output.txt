@@ -1,0 +1,16 @@
+1, Laptop Acer, 5, 800.0, Chiec, 6500, GM
+2, PC Gaming, 3, 1500.0, Bo, LG
+1, Dell XPS, 2, 1200.0, Chiec, 6500, GM
+2, PC Workstation, 1, 2500.0, Bo, MS
+1, HP Envy, 4, 1000.0, Chiec, 6500, GM
+2, PC Office, 6, 800.0, Bo, NH
+1, Asus ROG, 3, 2000.0, Chiec, 7503, GM
+2, PC Mini, 2, 600.0, Bo, HJIWAD
+1, MacBook Air, 8, 1200.0, Chiec, 71000, GM
+2, PC Home, 5, 700.0, Bo, GƯUID
+1, Lenovo ThinkPad, 2, 1300.0, Chiec, 8700, GM
+2, PC All-in-One, 3, 1000.0, Bo, AEFG
+1, Surface Laptop, 4, 1500.0, Chiec, 1250, GM
+2, PC Server, 1, 3000.0, Bo, ETG
+1, MSI Gaming Laptop, 6, 1800.0, Chiec, 1200, GM
+1, Laptop Acer, 5, 4600.0, Chiec, 6500, GM
