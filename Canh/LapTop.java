@@ -11,8 +11,8 @@ public class LapTop extends SanPham {
     }
 
     @Override
-    public void Nhap() {
-        super.Nhap();
+    public void nhap() {
+        super.nhap();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap dung luong pin: ");
         pin = scanner.nextInt();
@@ -22,8 +22,8 @@ public class LapTop extends SanPham {
     }
 
     @Override
-    public void Xuat() {
-        super.Xuat();
+    public void xuat() {
+        super.xuat();
         System.out.println("Dung luong pin: " + pin);
         System.out.println("Style nguoi dung: " + styleNguoiDung);
     }

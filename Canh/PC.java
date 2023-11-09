@@ -13,16 +13,16 @@ public class PC extends SanPham {
     }
 
     @Override
-    public void Nhap() {
-        super.Nhap();
+    public void nhap() {
+        super.nhap();
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap hang man hinh: ");
         hangManHinh = scanner.nextLine();
     }
 
     @Override
-    public void Xuat() {
-        super.Xuat();
+    public void xuat() {
+        super.xuat();
         System.out.println("Hang man hinh: " + hangManHinh);
     }
 }

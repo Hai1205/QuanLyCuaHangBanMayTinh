@@ -55,26 +55,31 @@ public abstract class SanPham {
         this.DVT = DVT;
     }
 
-    public void Nhap() {
+    public void nhap() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap ma san pham: ");
-        MaSP = scanner.nextLine();
+        setMaSP(scanner.nextLine());
         System.out.print("Nhap ten san pham: ");
-        Ten = scanner.nextLine();
+        setTen(scanner.nextLine());
         System.out.print("Nhap so luong: ");
-        SLCL = scanner.nextInt();
+        setSL(scanner.nextInt());
         System.out.print("Nhap don gia: ");
-        DG = scanner.nextDouble();
+        setDG(scanner.nextDouble());
         scanner.nextLine();
         System.out.print("Nhap don vi tinh: ");
-        DVT = scanner.nextLine();
+        setDVT(scanner.nextLine());
     }
-
-    public void Xuat() {
+    
+    public void xuat() {
         System.out.println("Ma san pham: " + MaSP);
         System.out.println("Ten san pham: " + Ten);
         System.out.println("So luong: " + SLCL);
         System.out.println("Don gia: " + DG);
         System.out.println("Don vi tinh: " + DVT);
     }
+    @Override
+    public String toString() {
+        return MaSP + ", " + Ten + ", " + SLCL + ", " + DG + ", " + DVT;
+    }
+
 }
