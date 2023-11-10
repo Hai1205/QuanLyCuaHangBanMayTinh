@@ -28,11 +28,16 @@ public class LapTop extends SanPham {
         System.out.println("Style nguoi dung: " + styleNguoiDung);
     }
 
-    public int getPin() {
-        return this.pin;
+    public void setPin(int pin) {
+        this.pin = pin;
     }
 
-    public String getStyleNguoiDung() {
-        return this.styleNguoiDung;
+    public void setStyleNguoiDung(String styleNguoiDung) {
+        this.styleNguoiDung = styleNguoiDung;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + ", " + pin + ", " + styleNguoiDung;
     }
 }

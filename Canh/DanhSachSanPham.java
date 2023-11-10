@@ -34,9 +34,12 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
     }
 
     public void setDanhSachSanPham(int i) {
-        dssp[i].nhap();
+        if (dssp[i] instanceof LapTop) {
+            ((LapTop) dssp[i]).nhap();
+        } else if (dssp[i] instanceof PC) {
+            ((PC) dssp[i]).nhap();
+        }
     }
-
   
     public SanPham getDanhSachSanPham(int i) {
         return dssp[i];
@@ -78,26 +81,20 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
     }
     public void nhapFile(boolean xoaHetDuLieuCu) {
         try {
-            System.out.println("Nhap file...");
-
-            FileWriter fw = new FileWriter("output.txt", !xoaHetDuLieuCu);  
+            FileWriter fw = new FileWriter("output.txt", xoaHetDuLieuCu);
             BufferedWriter bw = new BufferedWriter(fw);
-
             for (SanPham i : dssp) {
-                System.out.println("Ghi vao file: " + i.toString());
                 bw.write(i.toString());
                 bw.newLine();
             }
-
             bw.close();
             fw.close();
-
-            System.out.println("Hoan thanh nhap file!");
-        } catch (IOException e) {  
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    
+    
     public void xuatFile() {
         try {
             System.out.println("Xuat file...");
@@ -126,7 +123,6 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
                     double DG = Double.parseDouble(txt[3].trim());
                     String DVT = txt[4].trim();
                     String hangManHinh = txt[5].trim();
-    
                     PC pc = new PC(MaSP, Ten, SLCL, DG, DVT, hangManHinh);
                     them(pc);
                 }
@@ -313,25 +309,33 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
             System.out.println("3. So Luong");
             System.out.println("4. Don Gia");
             System.out.println("5. Don Vi Tinh");
-            System.out.println("6. thoat");
-            System.out.print("chon chuc nang (1-6): ");
+    
+            if (dssp[index] instanceof LapTop) {
+                System.out.println("6. Dung Luong Pin");
+                System.out.println("7. Style Nguoi Dung");
+            } else if (dssp[index] instanceof PC) {
+                System.out.println("6. Hang Man Hinh");
+            }
+    
+            System.out.println("8. thoat");
+            System.out.print("chon chuc nang (1-8): ");
             choice = scanner.nextInt();
             scanner.nextLine();
-
+    
             switch (choice) {
                 case 1:
                     System.out.println("Ma San Pham: ");
                     String maSanPham = scanner.nextLine();
                     dssp[index].setMaSP(maSanPham);
                     break;
-                    case 2:
+                case 2:
                     System.out.println("Ten: ");
-                    String ten = scanner.nextLine();  
+                    String ten = scanner.nextLine();
                     dssp[index].setTen(ten);
                     break;
                 case 3:
                     System.out.println("So Luong: ");
-                    int SL = scanner.nextInt();  
+                    int SL = scanner.nextInt();
                     dssp[index].setSL(SL);
                     break;
                 case 4:
@@ -341,18 +345,38 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
                     break;
                 case 5:
                     System.out.println("Don Vi Tinh: ");
-                    String DVT = scanner.nextLine();  
+                    String DVT = scanner.nextLine();
                     dssp[index].setDVT(DVT);
                     break;
-                
                 case 6:
-                    System.out.println("ket thuc!");
+                    if (dssp[index] instanceof LapTop) {
+                        System.out.println("Dung Luong Pin: ");
+                        int pin = scanner.nextInt();
+                        ((LapTop) dssp[index]).setPin(pin);
+                    } else if (dssp[index] instanceof PC) {
+                        System.out.println("Hang Man Hinh: ");
+                        scanner.nextLine(); 
+                        String hangManHinh = scanner.nextLine();
+                        ((PC) dssp[index]).setHangManHinh(hangManHinh);
+                    }
+                    break;
+                case 7:
+                    if (dssp[index] instanceof LapTop) {
+                        System.out.println("Style Nguoi Dung: ");
+                        String styleNguoiDung = scanner.nextLine();
+                        ((LapTop) dssp[index]).setStyleNguoiDung(styleNguoiDung);
+                    }
+                    break;
+                case 8:
+                    System.out.println("Ket thuc!");
                     break;
                 default:
-                    System.out.println("khong hop le!");
+                    System.out.println("Khong hop le!");
             }
-        } while (choice != 6);
+        } while (choice != 8);
     }
+    
+    
     public void sua() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("ma san pham: ");
@@ -374,7 +398,7 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
         }
     }
     public void thongKe() {
-        System.out.println("Thong ke theo ten san pham:");
+        System.out.println("Thong ke theo ma san pham:");
 
         String[] uniqueMaSPs = new String[n];
         int[] countPerMaSP = new int[n];
@@ -400,7 +424,7 @@ public class DanhSachSanPham implements DanhSach<SanPham> {
         }
 
         for (int i = 0; i < uniqueCount; i++) {
-            System.out.println("San Pham: " + uniqueMaSPs[i] + ", So luong: " + countPerMaSP[i]);
+            System.out.println("ma san pham: " + uniqueMaSPs[i] + ", So luong: " + countPerMaSP[i]);
         }
     }
 

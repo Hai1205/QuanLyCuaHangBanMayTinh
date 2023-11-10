@@ -7,11 +7,7 @@ public class PC extends SanPham {
         super(MaSP, Ten, SLCL, DG, DVT);
         this.hangManHinh = hangManHinh;
     }
-
-    public String getHangManHinh() {
-        return this.hangManHinh;
-    }
-
+    
     @Override
     public void nhap() {
         super.nhap();
@@ -25,4 +21,13 @@ public class PC extends SanPham {
         super.xuat();
         System.out.println("Hang man hinh: " + hangManHinh);
     }
+   
+    public void setHangManHinh(String hangManHinh) {
+        this.hangManHinh = hangManHinh;
+    }
+    @Override
+    public String toString() {
+        return super.toString() + ", " + hangManHinh;
+}
+
 }
