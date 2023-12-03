@@ -1,0 +1,4 @@
+sp001, lap001, 170, 1200, chiec, 2000, van phong
+sp002, pc002, 180, 1700, bo, asus
+sp003, lap003, 100, 2000, chiec, 40000, gaming
+sp004, lap004, 140, 2200, chiec, 35000, van phong

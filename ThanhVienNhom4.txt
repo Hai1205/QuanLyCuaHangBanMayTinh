@@ -1,0 +1,9 @@
+Danh sách thành viên tham gia đồ án
+
+Tên đồ án: Quản lý cửa hàng bán máy tính
+
+Tên các thành viên:
+    Nguyễn Hoàng Hải - 3122410095
+    Trương Xuân Cảnh - 3122410038
+    Quách Gia Bảo - 3122410024
+    Hà Ngọc Thiên Bảo - 3122410015

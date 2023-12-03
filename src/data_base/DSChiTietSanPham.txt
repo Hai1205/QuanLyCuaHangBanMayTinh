@@ -1,0 +1,4 @@
+sp001, nsx001, 8 GB, 512 GB, i7, rtx, win11, 2022
+sp002, nsx001, 8 GB, 1 TB, i9, rtx, win11, 2022
+sp003, nsx001, 16 GB, 1 TB, i9, rtx, win11, 2022
+sp004, nsx001, 8 GB, 512 GB, i7, rtx, win11, 2022

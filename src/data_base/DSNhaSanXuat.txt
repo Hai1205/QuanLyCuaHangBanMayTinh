@@ -1,0 +1,3 @@
+nsx001, msi
+nsx002, asus
+nsx003, dell
