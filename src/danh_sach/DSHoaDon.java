@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.Scanner;
 
 public class DSHoaDon implements DanhSach<HoaDon> {
     private HoaDon[] dshd;
@@ -546,11 +545,10 @@ public class DSHoaDon implements DanhSach<HoaDon> {
     }
     
     public void thongKeKhoangTG() throws ParseException {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap ngay bat dau: ");
-        String ngayBatDau = scanner.nextLine();
+        String ngayBatDau = Static.scanner.nextLine();
         System.out.print("Nhap ngay ket thuc: ");
-        String ngayKetThuc = scanner.nextLine();
+        String ngayKetThuc = Static.scanner.nextLine();
         // Chuyển đổi định dạng ngày từ dd/mm/yyyy sang yyyy-mm-dd
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date dateBatDau = sdf.parse(ngayBatDau);
