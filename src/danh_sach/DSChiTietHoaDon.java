@@ -190,15 +190,9 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dscthd[i].getMaHoaDon()).equals(maHoaDon)) {
-                dscthd[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
+        int index = timKiem(maHoaDon);
+        dscthd[index].xuat();
+        if (index == -1) {
             System.out.println("Khong hop le!");
         }
     }

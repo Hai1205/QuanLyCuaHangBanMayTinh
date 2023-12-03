@@ -20,6 +20,8 @@ public class QLHoaDon {
     }
 
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Hoa don ----");

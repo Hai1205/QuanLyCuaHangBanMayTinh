@@ -190,15 +190,9 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         System.out.print("Ma phieu nhap hang: ");
         String maPhieuNhap = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dspnh[i].getMPNH()).equals(maPhieuNhap)) {
-                dspnh[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
+        int index = timKiem(maPhieuNhap);
+        dspnh[index].xuat();
+        if (index == -1) {
             System.out.println("Khong hop le!");
         }
     }

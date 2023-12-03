@@ -153,19 +153,13 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
     public void timKiem() {
         Static.clearScreen();
 
-        System.out.println("Ma nha san xuat: ");
+        System.out.print("Ma nha san xuat: ");
         String maNhaSanXuat = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dsnsx[i].getMNSX()).equals(maNhaSanXuat)) {
-                dsnsx[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            System.out.println("khong hop le!");
+        int index = timKiem(maNhaSanXuat);
+        dsnsx[index].xuat();
+        if (index == -1) {
+            System.out.println("Khong hop le!");
         }
     }
 

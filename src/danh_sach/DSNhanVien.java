@@ -160,16 +160,9 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         System.out.print("Ma nhan vien: ");
         String maNhanVien = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dsnv[i].getMaNhanVien()).equals(maNhanVien)) {
-                System.out.println("found!");
-                dsnv[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
+        int index = timKiem(maNhanVien);
+        dsnv[index].xuat();
+        if (index == -1) {
             System.out.println("Khong hop le!");
         }
     }

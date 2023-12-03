@@ -5,17 +5,14 @@ import thuc_thi.Static;
 
 public class QLKhachHang {
     private DSKhachHang dskh;
-    private String maKhachHang;
 
     public QLKhachHang(DSKhachHang dskh) {
         this.dskh = dskh;
     }
 
-    public void setMKH(String maKhachHang) {
-        this.maKhachHang = maKhachHang;
-    }
-
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Khach hang ----");

@@ -15,6 +15,8 @@ public class QLPhieuBaoHanh {
     }
 
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Phieu bao hanh ----");

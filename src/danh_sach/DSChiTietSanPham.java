@@ -147,16 +147,10 @@ public class DSChiTietSanPham implements DanhSach<ChiTietSanPham> {
         System.out.print("Ma san pham: ");
         String maSanPham = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dsctsp[i].getMSP()).equals(maSanPham)) {
-                dsctsp[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            System.out.println("khong hop le!");
+        int index = timKiem(maSanPham);
+        dsctsp[index].xuat();
+        if (index == -1) {
+            System.out.println("Khong hop le!");
         }
     }
 

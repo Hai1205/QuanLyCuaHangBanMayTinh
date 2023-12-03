@@ -159,15 +159,9 @@ public class DSKhachHang implements DanhSach<KhachHang> {
         System.out.print("Ma khach hang: ");
         String maKhachHang = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dskh[i].getMaKhachHang()).equals(maKhachHang)) {
-                dskh[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
+        int index = timKiem(maKhachHang);
+        dskh[index].xuat();
+        if (index == -1) {
             System.out.println("Khong hop le!");
         }
     }

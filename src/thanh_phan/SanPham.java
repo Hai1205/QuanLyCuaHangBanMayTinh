@@ -1,6 +1,5 @@
 package thanh_phan;
 
-import danh_sach.*;
 import thuc_thi.Static;
 
 public abstract class SanPham {

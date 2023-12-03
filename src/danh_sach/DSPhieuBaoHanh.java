@@ -162,16 +162,10 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
         System.out.print("Ma phieu bao hanh: ");
         String maBaoHanh = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dspbh[i].getMaBaoHanh()).equals(maBaoHanh)) {
-                dspbh[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            System.out.println("khong tim thay!");
+        int index = timKiem(maBaoHanh);
+        dspbh[index].xuat();
+        if (index == -1) {
+            System.out.println("Khong hop le!");
         }
     }
 

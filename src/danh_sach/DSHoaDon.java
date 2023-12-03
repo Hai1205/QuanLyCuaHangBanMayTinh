@@ -206,16 +206,10 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dshd[i].getMaHoaDon()).equals(maHoaDon)) {
-                dshd[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            System.out.println("khong hop le!");
+        int index = timKiem(maHoaDon);
+        dshd[index].xuat();
+        if (index == -1) {
+            System.out.println("Khong hop le!");
         }
     }
 
@@ -440,7 +434,7 @@ public class DSHoaDon implements DanhSach<HoaDon> {
             System.out.println("5. Tong tien");
             System.out.println("6. Thoat");
             System.out.print("Chon chuc nang (1-6): ");
-            choice = Static.scanner.nextInt();
+            choice = Static.checkInputIsInt();
             Static.scanner.nextLine();
 
             switch (choice) {
@@ -466,7 +460,7 @@ public class DSHoaDon implements DanhSach<HoaDon> {
                     break;
                 case 5:
                     System.out.print("Tong tien: ");
-                    int tongTien = Static.scanner.nextInt();
+                    int tongTien = Static.checkInputIsInt();
                     dshd[index].setTongTien(tongTien);
                     break;
                 case 6:
@@ -576,11 +570,10 @@ public class DSHoaDon implements DanhSach<HoaDon> {
     }
 
     public void thongKeKhoangTT() {
-        Scanner scanner = new Scanner(System.in);
         System.out.print("Nhap tong tien toi thieu: ");
-        int tongTienToiThieu = scanner.nextInt();
+        int tongTienToiThieu = Static.checkInputIsInt();
         System.out.print("Nhap tong tien toi da: ");
-        int tongTienToiDa = scanner.nextInt();
+        int tongTienToiDa = Static.checkInputIsInt();
 
         HoaDon[] ds = timKiemDStheoKhoangTT(tongTienToiThieu, tongTienToiDa);
         if (ds == null) {

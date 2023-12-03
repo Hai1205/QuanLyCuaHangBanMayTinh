@@ -160,19 +160,13 @@ public class DSChiTietPhieuNhapHang implements DanhSach<ChiTietPhieuNhapHang> {
     public void timKiem() {
         Static.clearScreen();
 
-        System.out.println("Ma phieu nhap hang: ");
+        System.out.print("Ma phieu nhap hang: ");
         String maPhieuNhapHang = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dsctpnh[i].getMPNH()).equals(maPhieuNhapHang)) {
-                dsctpnh[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
-            System.out.println("khong hop le!");
+        int index = timKiem(maPhieuNhapHang);
+        dsctpnh[index].xuat();
+        if (index == -1) {
+            System.out.println("Khong hop le!");
         }
     }
 

@@ -11,6 +11,8 @@ public class QLChiTietPhieuNhapHang {
     }
 
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Chi tiet phieu nhap hang ----");

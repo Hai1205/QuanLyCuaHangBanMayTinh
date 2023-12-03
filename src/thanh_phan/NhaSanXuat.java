@@ -44,9 +44,8 @@ public class NhaSanXuat {
     }
 
     public void xuat() {
-        // System.out.println("Ma nha san xuat: " + getMNSX());
-        // System.out.println("Ten nha san xuat: " + getTNSX());
-        System.out.println("1");
+        System.out.println("Ma nha san xuat: " + getMNSX());
+        System.out.println("Ten nha san xuat: " + getTNSX());
     }
 
     @Override

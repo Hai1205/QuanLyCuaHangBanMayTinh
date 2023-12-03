@@ -206,19 +206,16 @@ public class DSSanPham implements DanhSach<SanPham> {
 
     public void timKiem() {
         Static.clearScreen();
-        
+
         System.out.print("Ma san pham: ");
         String maSanPham = Static.scanner.nextLine();
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if ((dssp[i].getMaSP()).equals(maSanPham)) {
-                dssp[i].xuat();
-                count++;
-                break;
-            }
-        }
-        if (count == 0) {
+        int index = timKiem(maSanPham);
+        dssp[index].xuat();
+        System.out.println("+ Chi tiet san pham: ");
+        dsctsp.getCTSP(index).xuat();
+
+        if (index == -1) {
             System.out.println("khong hop le!");
         }
     }

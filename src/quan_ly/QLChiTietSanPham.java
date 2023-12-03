@@ -11,6 +11,8 @@ public class QLChiTietSanPham {
     }
 
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Chi tiet san pham ----");

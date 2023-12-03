@@ -15,6 +15,8 @@ public class QLNhaSanXuat {
     }
 
     public void menu() {
+        Static.clearScreen();
+        
         int choice;
         do {
             System.out.println("---- Nha san xuat ----");
