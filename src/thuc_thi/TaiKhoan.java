@@ -177,7 +177,7 @@ public class TaiKhoan {
                 System.out.println("5. Nha san xuat");
                 System.out.println("6. Nhap hang");
                 System.out.println("7. Hoa don");
-                System.out.println("8. thoat");
+                System.out.println("8. Dang xuat");
                 System.out.print("chon chuc nang (1-8): ");
                 choice = Static.checkInputIsInt();
                 Static.scanner.nextLine();
@@ -223,7 +223,7 @@ public class TaiKhoan {
                 System.out.println("1. Xem cac san pham hien co trong cua hang");
                 System.out.println("2. Mua hang");
                 System.out.println("3. Cai dat");
-                System.out.println("4. Thoat");
+                System.out.println("4. Dang xuat");
                 System.out.print("Chon chuc nang (1-4): ");
                 luaChon = Static.checkInputIsInt();
                 Static.scanner.nextLine();
@@ -236,9 +236,8 @@ public class TaiKhoan {
                         qlhd.menu();
                         break;
                     case 3:
+                        Static.clearScreen();
                         do {
-                            Static.clearScreen();
-                            
                             System.out.println("---- Cai dat ----");
                             System.out.println("1. Thong tin");
                             System.out.println("2. Sua thong tin");
