@@ -53,11 +53,11 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
         this.n = n;
     }
 
-    public void setDSChiTietHoaDon(int i, ChiTietHoaDon value) {
+    public void setChiTietHoaDon(int i, ChiTietHoaDon value) {
         dscthd[i] = value;
     }
 
-    public void setDSChiTietHoaDon(int i) {
+    public void setChiTietHoaDon(int i) {
         dscthd[i].nhap();
     }
 
@@ -158,7 +158,6 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
             }
         } while (daTonTai);
 
-        dscthd[n].setDSSP(dssp);
         dscthd[n].setMaHoaDon(maHoaDon);
         dscthd[n].setMaSanPham(maSanPham);
         dscthd[n].setMaBaoHanh(maBaoHanh);
@@ -170,9 +169,7 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
         dspbh.setMKH(maKhachHang);
         dspbh.them();
 
-        int index = dssp.timKiem(maSanPham);
-        int SL = dssp.getSanPham(index).getSL() - dscthd[n++].getSoLuongMua();
-        dssp.getSanPham(index).setSL(SL);
+        dssp.giamSoLuong(maSanPham, dscthd[n++].getSoLuongMua());
 
         dssp.nhapFile(false);
         nhapFile(false);

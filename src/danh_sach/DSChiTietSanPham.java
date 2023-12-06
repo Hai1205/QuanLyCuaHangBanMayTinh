@@ -134,6 +134,7 @@ public class DSChiTietSanPham implements DanhSach<ChiTietSanPham> {
         dsctsp[n].setMSP(maSanPham);
         dsctsp[n].setMNSX(maNhaSanXuat);
         dsctsp[n++].nhap();
+        
         nhapFile(false);
     }
 

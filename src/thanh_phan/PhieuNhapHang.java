@@ -29,6 +29,10 @@ public class PhieuNhapHang {
         this.tongTien = other.tongTien;
     }
 
+    public void setDSCTPNH(DSChiTietPhieuNhapHang dsctpnh) {
+        this.dsctpnh = dsctpnh;
+    }
+
     public void setMPN(String maPhieuNhap) {
         this.maPhieuNhap = maPhieuNhap;
     }
@@ -48,12 +52,11 @@ public class PhieuNhapHang {
     public void setTT() {
         int tong = 0;
 
-        ChiTietPhieuNhapHang[] ds = dsctpnh.timKiemDStheoMPNH(this.maPhieuNhap);
+        ChiTietPhieuNhapHang[] ds = dsctpnh.timKiemDStheoMPNH(maPhieuNhap);
 
         for (ChiTietPhieuNhapHang ctpnh : ds) {
             tong += ctpnh.getTT();
         }
-
         setTT(tong);
     }
 

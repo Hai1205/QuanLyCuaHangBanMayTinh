@@ -44,11 +44,11 @@ public class DSKhachHang implements DanhSach<KhachHang> {
         this.n = n;
     }
 
-    public void setDSKH(int i, KhachHang value) {
+    public void setKH(int i, KhachHang value) {
         dskh[i] = value;
     }
 
-    public void setDSKH(int i) {
+    public void setKH(int i) {
         dskh[i].nhap();
     }
 

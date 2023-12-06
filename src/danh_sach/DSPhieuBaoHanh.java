@@ -58,11 +58,11 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
         this.n = n;
     }
 
-    public void setDScthd(int i, PhieuBaoHanh value) {
+    public void setPhieuBaoHanh(int i, PhieuBaoHanh value) {
         dspbh[i] = value;
     }
 
-    public void setDScthd(int i) {
+    public void setPhieuBaoHanh(int i) {
         dspbh[i].nhap();
     }
 
@@ -70,7 +70,7 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
         return n;
     }
 
-    public PhieuBaoHanh getDScthd(int i) {
+    public PhieuBaoHanh getPhieuBaoHanh(int i) {
         return dspbh[i];
     }
 

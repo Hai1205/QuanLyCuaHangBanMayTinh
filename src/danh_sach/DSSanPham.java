@@ -162,7 +162,7 @@ public class DSSanPham implements DanhSach<SanPham> {
         Static.scanner.nextLine();
     
         SanPham x;
-        if (maSanPham.isEmpty()) {
+        if (maSanPham == null || maSanPham.isEmpty()) {
             boolean daTonTai;
 
             do {
@@ -201,7 +201,7 @@ public class DSSanPham implements DanhSach<SanPham> {
     public void them(SanPham x) {
         dssp = Arrays.copyOf(dssp, n + 1);
         dssp[n++] = x;
-        nhapFile(false);
+        // nhapFile(false);
     }
 
     public void timKiem() {

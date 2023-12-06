@@ -1,9 +1,9 @@
 package thuc_thi;
 
 import java.io.*;
-import java.util.Scanner;
 import danh_sach.*;
 import quan_ly.*;
+import java.util.Scanner;
 
 public class TaiKhoan {
     private DSSanPham dssp;
@@ -31,10 +31,6 @@ public class TaiKhoan {
         qlsp = new QLSanPham(dssp);
         qlkh = new QLKhachHang(dskh);
     }
-
-    public TaiKhoan(DSHoaDon dshd, DSPhieuNhapHang dspnh) {}
-
-    public TaiKhoan(TaiKhoan other) {}
 
     public void menu() {
         int luaChon;
@@ -68,32 +64,35 @@ public class TaiKhoan {
     private void dangNhap() {
         Static.clearScreen();
 
+        String Username, Password;
+
         System.out.println("---- Dang nhap ----");
         do {
             System.out.print("Ten dang nhap: ");
-            username = Static.scanner.nextLine();
+            Username = Static.scanner.nextLine();
 
-            if (username.isEmpty()) {
+            if (Username.isEmpty()) {
                 System.out.println("Ten dang nhap khong duoc de trong! Xin nhap lai!");
-            } else if (checkSpace(username)) {
+            } else if (checkSpace(Username)) {
                 System.out.println("Ten dang nhap khong duoc co khoang trang! Xin nhap lai!");
-            } else if (!daTonTai(username)) {
+            } else if (!checkUsername(Username)) {
                 System.out.println("Ten dang nhap khong dung! Xin nhap lai!");
             }
-        } while (username.isEmpty() || checkSpace(username) || !daTonTai(username));
+        } while (Username.isEmpty() || checkSpace(Username) || !checkUsername(Username));
 
         do {
             System.out.print("Mat khau: ");
-            password = Static.scanner.nextLine();
+            Password = Static.scanner.nextLine();
 
-            if (password.isEmpty()) {
+            if (Password.isEmpty()) {
                 System.out.println("Mat khau khong duoc de trong! Xin nhap lai!");
-            } else if (checkSpace(password)) {
+            } else if (checkSpace(Password)) {
                 System.out.println("Mat khau khong duoc co khoang trang! Xin nhap lai!");
+            } else if (!(Password.equals(password))) {
+                System.out.println("Mat khau khong dung! Xin nhap lai!");
             }
-        } while (password.isEmpty() || checkSpace(password));
+        } while (Password.isEmpty() || checkSpace(Password) || !(Password.equals(password)));
 
-        maKhachHang = getMaKH(username);
 
         if (maKhachHang.equals("null")) {
             admin();
@@ -105,8 +104,6 @@ public class TaiKhoan {
     private void dangKy() {
         Static.clearScreen();
 
-        String rePassword;
-    
         System.out.println("---- Dang ky ----");
         do {
             System.out.print("Ten dang nhap: ");
@@ -116,14 +113,49 @@ public class TaiKhoan {
                 System.out.println("Ten dang nhap khong duoc de trong! Xin nhap lai!");
             } else if (checkSpace(username)) {
                 System.out.println("Ten dang nhap khong duoc co khoang trang! Xin nhap lai!");
-            } else if (daTonTai(username)) {
+            } else if (checkUsername(username)) {
                 System.out.println("Ten dang nhap da duoc su dung! Xin nhap lai!");
             }
-        } while (username.isEmpty() || checkSpace(username) || daTonTai(username));
+        } while (username.isEmpty() || checkSpace(username) || checkUsername(username));
     
+        setPassword();
+    
+        boolean daTonTai;
+        do {
+            System.out.print("Ma khach hang: ");
+            maKhachHang = Static.scanner.nextLine();
+            daTonTai = (dskh.timKiem(maKhachHang) != -1);
+    
+            if (daTonTai) {
+                System.out.println("Ma khach hang da duoc su dung! Xin nhap lai!");
+            }
+        } while (daTonTai);
+        dskh.setMKH(maKhachHang);
+        dskh.them();
+    
+        System.out.println("Dang ky thanh cong!");
+    
+        nhapFile(username, password, maKhachHang, true);
+    }
+
+    private void setUsername(String username) {
+        this.username = username;
+    }
+
+    private void setMaKhachHang(String maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
+
+    private void setPassword(String password) {
+        this.password = password;
+    }
+
+    private void setPassword() {
+        String rePassword;
+
         do {
             System.out.print("Mat khau: ");
-            password = Static.scanner.nextLine();
+            setPassword(Static.scanner.nextLine());
     
             if (password.isEmpty()) {
                 System.out.println("Mat khau khong duoc de trong! Xin nhap lai!");
@@ -144,23 +176,7 @@ public class TaiKhoan {
                 System.out.println("Mat khau nhap lai khong khop! Xin nhap lai!");
             }
         } while (rePassword.isEmpty() || checkSpace(rePassword) || !password.equals(rePassword));
-    
-        boolean daTonTai;
-        do {
-            System.out.print("Ma khach hang: ");
-            maKhachHang = Static.scanner.nextLine();
-            daTonTai = (dskh.timKiem(maKhachHang) != -1);
-    
-            if (daTonTai) {
-                System.out.println("Ma khach hang da duoc su dung! Xin nhap lai!");
-            }
-        } while (daTonTai);
-        dskh.setMKH(maKhachHang);
-        dskh.them();
-    
-        System.out.println("Dang ky thanh cong!");
-    
-        nhapFile(username, password, maKhachHang);
+
     }
 
     private void admin() {
@@ -171,7 +187,7 @@ public class TaiKhoan {
 
                 System.out.println("---- " + username + " ----");
                 System.out.println("1. San pham");
-                System.out.println("2. Phieu bao hanh");
+                System.out.println("2. Bao hanh");
                 System.out.println("3. Nhan vien");
                 System.out.println("4. Khach hang");
                 System.out.println("5. Nha san xuat");
@@ -272,12 +288,15 @@ public class TaiKhoan {
         return str != null && str.contains(" ");
     }
     
-    private boolean daTonTai(String username) {
+    private boolean checkUsername(String username) {
         try (Scanner scanner = new Scanner(new File("../src/data_base/DSTaiKhoan.txt"))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(", ");
                 if (parts.length > 0 && parts[0].equals(username)) {
+                    setUsername(parts[0]);
+                    setPassword(parts[1]);
+                    setMaKhachHang(parts[2]);
                     return true;
                 }
             }
@@ -287,23 +306,8 @@ public class TaiKhoan {
         return false;
     }
 
-    private String getMaKH(String username) {
-        try (Scanner scanner = new Scanner(new File("../src/data_base/DSTaiKhoan.txt"))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(", ");
-                if (parts.length > 0 && parts[0].equals(username)) {
-                    return parts[2];
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private void nhapFile(String username, String password, String maKhachHang) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("../src/data_base/DSTaiKhoan.txt", true))) {
+    private void nhapFile(String username, String password, String maKhachHang, boolean khongXoaHet) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("../src/data_base/DSTaiKhoan.txt", khongXoaHet))) {
             writer.write(username + ", " + password + ", " + maKhachHang);
             writer.newLine();
         } catch (IOException e) {

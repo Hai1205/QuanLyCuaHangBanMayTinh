@@ -9,7 +9,9 @@ public class ChiTietHoaDon {
     private String maHoaDon, maSanPham, maBaoHanh;
     private int soLuongMua, donGia, thanhTien;
 
-    public ChiTietHoaDon() {}
+    public ChiTietHoaDon() {
+        dssp = new DSSanPham();
+    }
 
     public ChiTietHoaDon(String maHoaDon, String maSanPham, String maBaoHanh, int soLuongMua, int donGia, int thanhTien) {
         setMaHoaDon(maHoaDon);
@@ -51,10 +53,6 @@ public class ChiTietHoaDon {
 
     public String getMaBaoHanh() {
         return maBaoHanh;
-    }
-
-    public void setDSSP(DSSanPham dssp) {
-        this.dssp = dssp;
     }
 
     public void setMaHoaDon(String maHoaDon) {

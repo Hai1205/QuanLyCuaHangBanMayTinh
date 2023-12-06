@@ -44,11 +44,11 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         this.n = n;
     }
 
-    public void setdsnv(int i, NhanVien value) {
+    public void setNhanVien(int i, NhanVien value) {
         dsnv[i] = value;
     }
 
-    public void setdsnv(int i) {
+    public void setNhanVien(int i) {
         dsnv[i].nhap();
     }
 
@@ -84,7 +84,7 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         try {
             FileWriter fw = new FileWriter("../src/data_base/DSNhanVien.txt", khongXoaHetDuLieuCu);
             BufferedWriter bw = new BufferedWriter(fw);
-            
+
             for (NhanVien i : dsnv) {
                 if (i != null) {
                     bw.write(i.toString());
@@ -97,7 +97,6 @@ public class DSNhanVien implements DanhSach<NhanVien> {
             e.printStackTrace();
         }
     }
-    
 
     public void xuatFile() {
         try {
@@ -312,7 +311,7 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         if (count == 0)
             return null;
         return Arrays.copyOf(ds, count);
-    } 
+    }
 
     public void xoa() {
         Static.clearScreen();
@@ -350,14 +349,16 @@ public class DSNhanVien implements DanhSach<NhanVien> {
             xoa(index);
         }
     }
+
     public void giamKPI(String maNhanVien) {
         int indexNV = timKiem(maNhanVien);
         if (indexNV != -1) {
             NhanVien nv = getNhanVien(indexNV);
-            nv.setKPI(Math.max(nv.getKPI() - 1, 0)); 
+            nv.setKPI(Math.max(nv.getKPI() - 1, 0));
             nhapFile(false);
         }
     }
+
     public void sua(int index) {
         int choice;
         do {
@@ -440,35 +441,36 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         }
         nhapFile(false);
     }
-    
+
     public void thongKe() {
         Static.clearScreen();
-        
-       System.out.println("Nhan vien co: " + n + "phieu nhap" );{
-        long tongLuong = 0;
-        for (int i = 0; i < n; i++) {
-            tongLuong += dsnv[i].getLuong();
-        }
-        double luongTrungBinh = (double) tongLuong / n;
-        System.out.println("Luong trung binh cua nhan vien la: " + luongTrungBinh);
-    
-        int indexMaxLuong = 0;
-        for (int i = 1; i < n; i++) {
-            if (dsnv[i].getLuong() > dsnv[indexMaxLuong].getLuong()) {
-                indexMaxLuong = i;
-            }
-        }
-        System.out.println("Nhan vien co luong cao nhat la:");
-        dsnv[indexMaxLuong].xuat();
 
-        int indexMinLuong = 0;
-        for (int i = 1; i < n; i++) {
-            if (dsnv[i].getLuong() < dsnv[indexMinLuong].getLuong()) {
-                indexMinLuong = i;
+        System.out.println("Nhan vien co: " + n + "phieu nhap");
+        {
+            long tongLuong = 0;
+            for (int i = 0; i < n; i++) {
+                tongLuong += dsnv[i].getLuong();
             }
+            double luongTrungBinh = (double) tongLuong / n;
+            System.out.println("Luong trung binh cua nhan vien la: " + luongTrungBinh);
+
+            int indexMaxLuong = 0;
+            for (int i = 1; i < n; i++) {
+                if (dsnv[i].getLuong() > dsnv[indexMaxLuong].getLuong()) {
+                    indexMaxLuong = i;
+                }
+            }
+            System.out.println("Nhan vien co luong cao nhat la:");
+            dsnv[indexMaxLuong].xuat();
+
+            int indexMinLuong = 0;
+            for (int i = 1; i < n; i++) {
+                if (dsnv[i].getLuong() < dsnv[indexMinLuong].getLuong()) {
+                    indexMinLuong = i;
+                }
+            }
+            System.out.println("Nhan vien co luong thap nhat la:");
+            dsnv[indexMinLuong].xuat();
         }
-        System.out.println("Nhan vien co luong thap nhat la:");
-        dsnv[indexMinLuong].xuat();
     }
-}
 }

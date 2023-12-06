@@ -130,29 +130,41 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         dspnh = Arrays.copyOf(dspnh, n + 1);
         System.out.println("Thong tin phieu nhap hang: ");
         dspnh[n] = new PhieuNhapHang();
-        
+
         String maPhieuNhap, maNhanVien, maNhaSanXuat;
-        boolean daTonTai, nhanVien, nhaSanXuat;
-        
+        boolean phieuNhapHang, nhanVien, nhaSanXuat;
+
         do {
             System.out.print("Ma phieu nhap hang: ");
             maPhieuNhap = Static.scanner.nextLine();
-            
-            daTonTai = (timKiem(maPhieuNhap) != -1);
-            
-            if (daTonTai) {
+            phieuNhapHang = (timKiem(maPhieuNhap) != -1);
+
+            if (phieuNhapHang) {
                 System.out.println("Ma phieu nhap hang da ton tai! Xin nhap lai!");
             }
-        } while (daTonTai);
-        
-        System.out.print("Ma nhan vien: ");
-        maNhanVien = Static.scanner.nextLine();
-        nhanVien = (dsnv.timKiem(maNhanVien) == -1);
+        } while (phieuNhapHang);
 
-        System.out.print("Ma nha san xuat: ");
-        maNhaSanXuat = Static.scanner.nextLine();
-        nhaSanXuat = (dsnsx.timKiem(maNhaSanXuat) == -1);
+        do {
+            System.out.print("Ma nhan vien: ");
+            maNhanVien = Static.scanner.nextLine();
+            nhanVien = (dsnv.timKiem(maNhanVien) == -1);
 
+            if (nhanVien) {
+                System.out.println("Ma nhan vien khong dung! Xin nhap lai!");
+            }
+        } while (nhanVien);
+
+        do {
+            System.out.print("Ma nha san xuat: ");
+            maNhaSanXuat = Static.scanner.nextLine();
+            nhaSanXuat = (dsnsx.timKiem(maNhaSanXuat) == -1);
+
+            if (nhaSanXuat) {
+                System.out.println("Ma nha san xuat khong dung! Xin nhap lai!");
+            }
+        } while (nhaSanXuat);
+
+        dspnh[n].setDSCTPNH(dsctpnh);
         dspnh[n].setMPN(maPhieuNhap);
         dspnh[n].setMNV(maNhanVien);
         dspnh[n].setMNSX(maNhaSanXuat);
@@ -161,18 +173,8 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         dsctpnh.setMPN(maPhieuNhap);
         dsctpnh.setMNSX(maNhaSanXuat);
         dsctpnh.nhap();
-
+        
         dspnh[n++].setTT();
-
-        if (nhanVien) {
-            dsnv.setMNV(maNhanVien);
-            dsnv.them();
-        }
-
-        if (nhaSanXuat) {
-            dsnsx.setMNSX(maNhaSanXuat);
-            dsnsx.them();
-        }
 
         nhapFile(false);
     }

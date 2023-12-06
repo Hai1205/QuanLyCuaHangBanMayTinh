@@ -125,16 +125,7 @@ public class DSChiTietPhieuNhapHang implements DanhSach<ChiTietPhieuNhapHang> {
     }
 
     public void capNhatSLSP(ChiTietPhieuNhapHang x) {
-        int index = dssp.timKiem(x.getMSP());
-        if (index == -1) {
-            dssp.setMSP(x.getMSP());
-            dssp.setSL(x.getSL());
-            dssp.setMNSX(maNhaSanXuat);
-            dssp.them();
-        } else {
-            dssp.tangSoLuong(x.getMSP(), x.getSL());
-        }
-        dssp.nhapFile(false);
+        
     }
 
     public void them() {
@@ -147,7 +138,18 @@ public class DSChiTietPhieuNhapHang implements DanhSach<ChiTietPhieuNhapHang> {
         dsctpnh[n].setMPNH(maPhieuNhap);
         dsctpnh[n].nhap();
 
-        capNhatSLSP(dsctpnh[n++]);
+        int index = dssp.timKiem(dsctpnh[n].getMSP());
+        if (index == -1) {
+            dssp.setMSP(dsctpnh[n].getMSP());
+            dssp.setSL(dsctpnh[n].getSL());
+            dssp.setMNSX(maNhaSanXuat);
+            dssp.them();
+        } else {
+            dssp.tangSoLuong(dsctpnh[n].getMSP(), dsctpnh[n].getSL());
+        }
+
+        n++;
+        
         nhapFile(false);
     }
 
