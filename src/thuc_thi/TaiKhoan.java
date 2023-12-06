@@ -135,7 +135,7 @@ public class TaiKhoan {
     
         System.out.println("Dang ky thanh cong!");
     
-        nhapFile(username, password, maKhachHang, true);
+        nhapFile(true);
     }
 
     private void setUsername(String username) {
@@ -287,26 +287,28 @@ public class TaiKhoan {
     public boolean checkSpace(String str) {
         return str != null && str.contains(" ");
     }
-    
+
     private boolean checkUsername(String username) {
-        try (Scanner scanner = new Scanner(new File("../src/data_base/DSTaiKhoan.txt"))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(", ");
-                if (parts.length > 0 && parts[0].equals(username)) {
-                    setUsername(parts[0]);
-                    setPassword(parts[1]);
-                    setMaKhachHang(parts[2]);
+        try {
+            FileReader fr = new FileReader("../src/data_base/DSTaiKhoan.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] txt = line.split(", ");
+                if (txt.length == 3 && txt[0].equals(username)) {
+                    setUsername(username);
+                    setPassword(txt[1]);
+                    setMaKhachHang(txt[2]);
                     return true;
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    private void nhapFile(String username, String password, String maKhachHang, boolean khongXoaHet) {
+    private void nhapFile(boolean khongXoaHet) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("../src/data_base/DSTaiKhoan.txt", khongXoaHet))) {
             writer.write(username + ", " + password + ", " + maKhachHang);
             writer.newLine();
