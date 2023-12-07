@@ -392,9 +392,9 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         if (index >= 0 && index < n) {
             HoaDon hd = dshd[index];
             if (hd != null) {
-                ChiTietHoaDon[] chiTiet = dscthd.timKiemDStheoMHD(hd.getMaHoaDon());
-                if (chiTiet != null) {
-                    for (ChiTietHoaDon ct : chiTiet) {
+                ChiTietHoaDon[] dsct = dscthd.timKiemDStheoMHD(hd.getMaHoaDon());
+                if (dsct != null) {
+                    for (ChiTietHoaDon ct : dsct) {
                         if (ct != null) {
                             dssp.tangSoLuong(ct.getMaSanPham(), ct.getSoLuongMua());
                             dscthd.xoaTheoHoaDon(ct.getMaHoaDon());

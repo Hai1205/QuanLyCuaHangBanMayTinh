@@ -72,12 +72,16 @@ public class KhachHang {
         
         do {
             System.out.print("So dien thoai: ");
-            setSoDienThoai(String.valueOf(Static.checkInputIsInt()));
+            soDienThoai = String.valueOf(Static.checkInputIsInt());
+            if(soDienThoai.length() == 9) {
+                soDienThoai = "0" + soDienThoai;
+            }
+            System.out.println(soDienThoai);
 
-            if (getSoDienThoai().length() != 10) {
+            if (soDienThoai.length() != 10) {
                 System.out.println("So dien thoai khong hop le!");
             }
-        } while (getSoDienThoai().length() != 10);
+        } while (soDienThoai.length() != 10);
     }
 
     public void xuat() {
