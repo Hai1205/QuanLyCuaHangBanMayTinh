@@ -40,6 +40,10 @@ public class HoaDon {
         return tongTien;
     }
 
+    public void setDSCTHD(DSChiTietHoaDon dscthd) {
+        this.dscthd = dscthd;
+    }
+
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }

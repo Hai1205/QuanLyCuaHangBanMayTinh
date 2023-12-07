@@ -175,6 +175,7 @@ public class DSHoaDon implements DanhSach<HoaDon> {
             } while (khachHang);
         }
 
+        dshd[n].setDSCTHD(dscthd);
         dshd[n].setMaHoaDon(maHoaDon);
         dshd[n].setMaNhanVien(maNhanVien);
         dshd[n].setMaKhachHang(maKhachHang);

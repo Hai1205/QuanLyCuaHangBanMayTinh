@@ -5,3 +5,5 @@ bh004, sp001, hd004, kh001, 6 thang
 bh005, sp003, hd007, kh001, 6 thang
 bh006, sp001, hd010, kh001, 6 thang
 bh008, sp005, hd009, kh003, 6 thang
+bh009, sp001, hd011, kh001, 6 thang
+bh010, sp002, hd011, kh001, 6 thang
