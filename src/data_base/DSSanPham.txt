@@ -15,7 +15,7 @@ sp014, Lenovo Thinkpad P14S G2, 150, 3000, chiec, 3400, Van Phong
 sp015, Lenovo Yoga Slim, 181, 2100, chiec, 2500, Van phong
 sp016, Lenovo Ideapad Gaming 3, 160, 2000, chiec, 3000, Gaming
 sp017, PC Leren 7, 150, 3000, Bo, Lenovo
-sp018, Gigabyte MF, 200, 2100, chiec, 2500, Gaming
+sp018, Gigabyte MF, 197, 2100, chiec, 2500, Gaming
 sp019, Gigabyte G5, 187, 2000, chiec, 3000, Gaming
 sp020, Gigabyte G5 KF, 150, 2400, chiec, 3500, Gaming
 sp021, Gigabyte G5 GE, 120, 2100, chiec, 2400, Gaming
