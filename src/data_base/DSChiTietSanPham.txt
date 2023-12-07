@@ -3,3 +3,23 @@ sp002, nsx001, 8 GB, 1 TB, i9, rtx, win11, 2022
 sp003, nsx001, 16 GB, 1 TB, i9, rtx, win11, 2022
 sp004, nsx001, 8 GB, 512 GB, i7, rtx, win11, 2022
 sp005, nsx003, 8 GB, 512 GB, i7, rtx, win11, 2022
+sp006, nsx004, 8 GB, 512 GB, i5, rtx3050, win11, 2021
+sp007, nsx004, 16GB, 512 GB, i7, intel iris xe, win11, 2022
+sp008, nsx004, 8 GB, 512 GB, i7, rtx3050, win11, 2022
+sp009, nsx004, 8 GB, 512 GB, i5, intel iris xe, win11, 2022
+sp010, nsx005, 8 GB, 512 GB, i7, rtx4050, win11, 2021
+sp011, nsx005, 16 GB, 512 Gb, i7, rtx3060, win11, 2022
+sp012, nsx005, 16 GB, 512 GB, i7, rtx 2050, win11, 2022
+sp013, nsx005, 16 GB, 512 GB, i7, rtx3050, win11, 2022
+sp014, nsx006, 8 GB, 512 GB, i5, quadro t500, win11, 2022
+sp015, nsx006, 8 GB, 512 Gb, r5, radeon vega 7, win11, 2021
+sp016, nsx006, 16 GB, 512 GB, r5, rtx3050, win11, 2022
+sp017, nsx006, 16 GB, 512 GB, r7, amd5500, win11, 2022
+sp018, nsx007, 8 GB, 512 GB, i5, rtx 4050, win11, 2022
+sp019, nsx007, 16 GB, 512 GB, i5, rtx 3050, win11, 2021
+sp020, nsx007, 8 GB, 512 GB, i5, rtx 4060, win11, 2022
+sp021, nsx007, 8 GB, 512 GB, i5, rtx 3050, win11, 2021
+sp022, nsx008, 8 GB, 512 GB, GPU7, Apple M1, MacOS, 2021
+sp023, nsx008, 8 GB, 256 GB, GPU8, Apple M2, MacOS, 2022
+sp024, nsx008, 8 GB, 256 GB, GPU 10, Apple M2, MacOS, 2022
+sp025, nsx008, 16 GB, 512 GB, GPU8, Apple M2, MacOS, 2022

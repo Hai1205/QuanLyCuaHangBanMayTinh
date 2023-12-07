@@ -1,3 +1,8 @@
 kh001, nguyen hoang, hai, sai gon, 1234567890
 kh002, bui thi khanh, ha, sai gon, 1234567890
-kh003, sieu nhan, gao, ha noi, 1234567890
+kh003, Tran khanh, An, ha noi, 1234567890
+kh004, Bui Thanh, Xuan, Sai Gon, 1649416494
+kh005, Quach Gia, Bao, Sai Gon, 1349672684
+kh006, Nguyen Thanh, Van, Da Nang, 1246873950
+kh007, Nguyen Van, Vu, An Giang, 1462873925
+kh008, Phan Hung, Dung, Ha Tinh, 1254697835
