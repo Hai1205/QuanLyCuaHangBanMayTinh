@@ -129,7 +129,7 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         System.out.println("Thong tin nhan vien: ");
         dsnv[n] = new NhanVien();
 
-        if (maNhanVien.isEmpty()) {
+        if (maNhanVien == null || maNhanVien.isEmpty()) {
             boolean daTonTai;
             do {
                 System.out.print("Ma nhan vien: ");

@@ -124,7 +124,7 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
 
         boolean daTonTai;
         
-        if (maNhaSanXuat.isEmpty()) {
+        if (maNhaSanXuat == null || maNhaSanXuat.isEmpty()) {
             do {
                 System.out.print("Ma nha san xuat: ");
                 maNhaSanXuat = Static.scanner.nextLine();
