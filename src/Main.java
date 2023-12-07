@@ -1,5 +1,3 @@
-import danh_sach.*;
-import thanh_phan.*;
 import thuc_thi.*;
 
 public class Main {

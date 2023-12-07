@@ -3,7 +3,6 @@ package thuc_thi;
 import java.io.*;
 import danh_sach.*;
 import quan_ly.*;
-import java.util.Scanner;
 
 public class TaiKhoan {
     private DSSanPham dssp;
@@ -302,6 +301,9 @@ public class TaiKhoan {
                     return true;
                 }
             }
+
+            br.close();
+            fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -309,9 +311,14 @@ public class TaiKhoan {
     }
 
     private void nhapFile(boolean khongXoaHet) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("../src/data_base/DSTaiKhoan.txt", khongXoaHet))) {
-            writer.write(username + ", " + password + ", " + maKhachHang);
-            writer.newLine();
+        try {
+            FileWriter fr = new FileWriter("../src/data_base/DSTaiKhoan.txt", khongXoaHet);
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(username + ", " + password + ", " + maKhachHang);
+            br.newLine();
+
+            br.close();
+            fr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
