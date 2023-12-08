@@ -1,0 +1,8 @@
+nsx001, msi
+nsx002, asus
+nsx003, dell
+nsx005, accer
+nsx004, hp
+nsx006, lenovo
+nsx007, gigabyte
+nsx008, apple
