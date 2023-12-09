@@ -182,8 +182,8 @@ public class TaiKhoan {
 
     }
 
-    private void admin() {
-        // public void admin() {
+    // private void admin() {
+        public void admin() {
             int choice;
             do {
                 Static.clearScreen();
@@ -275,9 +275,9 @@ public class TaiKhoan {
             } while (choice != 3);
         }
 
-    private void user() {
-        // public void user() {
-            // maKhachHang = "kh001";
+    // private void user() {
+        public void user() {
+            maKhachHang = "kh001";
         int index = dskh.timKiem(maKhachHang);
 
         int choice;

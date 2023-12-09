@@ -1,10 +1,11 @@
 nv001, nguyen, an, 12/1/1999, 11, 6100000
 nv002, tran, khanh, 22/11/1998, 5, 5000000
-nv003, tran hung, dao, 12/05/2000, 3, 5000000
-nv004, Nguyen Khanh, Duy, 23/1/2000, 4, 5000000
+nv003, tran hung, dao, 12/05/2000, 4, 5000000
+nv004, Nguyen Khanh, Duy, 23/1/2000, 5, 5000000
 nv005, Tran Nguyen Thai, An, 13/3/1999, 3, 5000000
 nv006, Ha Thai Thien, An, 8/11/1998, 0, 5000000
-nv007, Nguyen Hung, Dung, 15/7/1999, 0, 5000000
+nv007, Nguyen Hung, Dung, 15/7/1999, 1, 5000000
 nv008, Duong Nguyen, Bao, 25/6/1997, 0, 5000000
 nv009, Tran Tan, Dat, 23/8/1998, 0, 5000000
 nv010, Ho Thai, Hien, 20/3/2000, 0, 5000000
+nv011, nguyen van, hieu, 12/12/2004, 0, 5000000

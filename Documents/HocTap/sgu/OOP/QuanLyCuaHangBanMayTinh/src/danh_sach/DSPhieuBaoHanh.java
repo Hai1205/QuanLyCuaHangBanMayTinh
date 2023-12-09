@@ -160,6 +160,12 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
         String maBaoHanh = Static.scanner.nextLine();
 
         int index = timKiem(maBaoHanh);
+
+        if (index == -1) {
+            System.out.println("Ma phieu bao hanh khong dung!");
+            return;
+        }
+
         System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma bao hanh", "Ma san pham", "Ma hoa don", "Ma khach hang", "Thoi gian bao hanh");
         dspbh[index].xuat();
         if (index == -1) {

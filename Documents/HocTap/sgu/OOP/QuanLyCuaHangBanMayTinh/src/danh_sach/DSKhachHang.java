@@ -159,6 +159,12 @@ public class DSKhachHang implements DanhSach<KhachHang> {
         String maKhachHang = Static.scanner.nextLine();
 
         int index = timKiem(maKhachHang);
+
+        if (index == -1) {
+            System.out.println("Ma khach hang khong dung!");
+            return;
+        }
+        
         System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma khach hang", "Ho khach hang", "Ten khach hang", "Dia chi", "So dien thoai");
         dskh[index].xuat();
         if (index == -1) {

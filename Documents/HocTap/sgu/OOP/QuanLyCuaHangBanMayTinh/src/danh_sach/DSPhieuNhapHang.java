@@ -196,6 +196,12 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         String maPhieuNhap = Static.scanner.nextLine();
 
         int index = timKiem(maPhieuNhap);
+
+        if (index == -1) {
+            System.out.println("Ma phieu nhap hang khong dung!");
+            return;
+        }
+        
         System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
         dspnh[index].xuat();
 

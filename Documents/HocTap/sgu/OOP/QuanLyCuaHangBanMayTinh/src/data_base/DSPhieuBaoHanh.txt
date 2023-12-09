@@ -9,16 +9,16 @@ bh009, sp015, hd009, kh003, 6 thang
 bh010, sp009, hd011, kh004, 6 thang
 bh011, sp019, hd012, kh004, 6 thang
 bh012, sp015, hd012, kh004, 6 thang
-bh009, sp001, hd011, kh001, 6 thang
-bh010, sp002, hd011, kh001, 6 thang
-bh015, sp018, hd012, kh004, 6 thang
-bh023, sp001, hd0022, kh001, 6 thang
-bh024, sp001, hd024, kh004, 6 thang
-bh026, sp001, hd026, kh001, 6 thang
-bh025, sp025, hd025, kh001, 6
-bh027, sp025, hd027, kh001, 6
-1, 1, 1, kh001, 1
-bh020, sp025, hd018, kh001, 6
-bh028, sp025, hd019, kh001, 6
-bh029, sp023, hd020, kh001, 12 thang
-bh030, sp023, hd021, kh001, 12 thang
+bh013, sp018, hd012, kh004, 6 thang
+bh014, sp001, hd0022, kh001, 6 thang
+bh015, sp001, hd024, kh004, 6 thang
+bh016, sp001, hd026, kh001, 6 thang
+bh017, sp025, hd025, kh001, 6 thang
+bh018, sp025, hd027, kh001, 6 thang
+bh019, sp025, hd018, kh001, 6 thang
+bh020, sp025, hd019, kh001, 6 thang
+bh021, sp023, hd021, kh001, 12 thang
+bh022, sp025, hd022, kh001, 6 thang
+bh023, sp025, hd023, kh001, 6 thang
+bh024, sp025, hd024, kh001, 6 thang
+pbh025, sp024, hd025, kh001, 6 thang

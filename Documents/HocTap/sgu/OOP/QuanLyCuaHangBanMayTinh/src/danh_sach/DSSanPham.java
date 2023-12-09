@@ -207,6 +207,12 @@ public class DSSanPham implements DanhSach<SanPham> {
         String maSanPham = Static.scanner.nextLine();
 
         int index = timKiem(maSanPham);
+
+        if (index == -1) {
+            System.out.println("Ma san pham khong dung!");
+            return;
+        }
+        
         System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n","Ma san pham", "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
         dssp[index].xuat();
 
@@ -337,10 +343,12 @@ public class DSSanPham implements DanhSach<SanPham> {
         int index = timKiem(maSanPham);
         if (index != -1) {
             SanPham sp = dssp[index];
-            sp.setSL(sp.getSL() + soLuongTang);
+            int soLuongMoi = sp.getSL() + soLuongTang;
+            sp.setSL(soLuongMoi);
             nhapFile(false);
         }
     }  
+
     public void sua(int index) {
         int choice;
         do {

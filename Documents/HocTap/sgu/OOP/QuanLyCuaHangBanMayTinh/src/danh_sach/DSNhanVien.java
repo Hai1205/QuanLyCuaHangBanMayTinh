@@ -159,6 +159,12 @@ public class DSNhanVien implements DanhSach<NhanVien> {
         String maNhanVien = Static.scanner.nextLine();
 
         int index = timKiem(maNhanVien);
+
+        if (index == -1) {
+            System.out.println("Ma nhan vien khong dung!");
+            return;
+        }
+        
         System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma nhan vien", "Ho nhan vien", "Ten nhan vien", "Ngay sinh", "KPI", "Luong");
         dsnv[index].xuat();
         if (index == -1) {

@@ -21,13 +21,12 @@ public class QLSanPham {
         do {
             System.out.println("---- San pham ----");
             System.out.println("1. Hien thi danh sach san pham");
-            System.out.println("2. Them san pham");
-            System.out.println("3. Xoa san pham");
-            System.out.println("4. Sua thong tin san pham");
-            System.out.println("5. Tra cuu thong tin san pham");
-            System.out.println("6. Tim kiem san pham theo gia");
-            System.out.println("7. Thoat");
-            System.out.print("Chon chuc nang (1-7): ");
+            System.out.println("2. Xoa san pham");
+            System.out.println("3. Sua thong tin san pham");
+            System.out.println("4. Tra cuu thong tin san pham");
+            System.out.println("5. Tim kiem san pham theo gia");
+            System.out.println("6. Thoat");
+            System.out.print("Chon chuc nang (1-6): ");
             choice = Static.checkInputIsInt();
             Static.scanner.nextLine();
 
@@ -36,26 +35,23 @@ public class QLSanPham {
                     dssp.xuat();
                     break;
                 case 2:
-                    dssp.them();
-                    break;
-                case 3:
                     dssp.xoa();
                     break;
-                case 4:
+                case 3:
                     dssp.sua();
                     break;
-                case 5:
+                case 4:
                     dssp.timKiem();
                     break;
-                case 6:
+                case 5:
                     dssp.timKiemDStheoKhoangDG();
                     break;
-                case 7:
+                case 6:
                     break;
                 default:
                     System.out.println("Lua chon khong hop le! Vui long chon lai!");
             }
-        } while (choice != 7);
+        } while (choice != 6);
     }
 
     public void menuUser() {

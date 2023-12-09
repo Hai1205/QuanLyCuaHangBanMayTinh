@@ -12,7 +12,7 @@ sp011, Acer Predator Helios, 170, 3000, chiec, 3500, Gaming
 sp012, Acer Aspire, 300, 2400, chiec, 2500, Gaming
 sp013, PC Experon, 200, 2500, bo, Acer
 sp014, Lenovo Thinkpad P14S G2, 150, 3000, chiec, 3400, Van Phong
-sp015, Lenovo Yoga Slim, 181, 2100, chiec, 2500, Van phong
+sp015, Lenovo Yoga Slim, 163, 2100, chiec, 2500, Van phong
 sp016, Lenovo Ideapad Gaming 3, 160, 2000, chiec, 3000, Gaming
 sp017, PC Leren 7, 150, 3000, Bo, Lenovo
 sp018, Gigabyte MF, 197, 2100, chiec, 2500, Gaming
@@ -22,4 +22,4 @@ sp021, Gigabyte G5 GE, 130, 2100, chiec, 2400, Gaming
 sp022, MacBook Air M1, 140, 2300, chiec, 2000, Van Phong
 sp023, MacBook Air M2, 500, 2700, chiec, 2500, Van Phong
 sp024, MacBook Air 15 M2, 100, 3000, chiec, 2600, Van Phong
-sp025, Apple MacBook Air M2, 7, 3900, chiec, 3000, Van Phong
+sp025, Apple MacBook Air M2, 0, 3900, chiec, 3000, Van Phong

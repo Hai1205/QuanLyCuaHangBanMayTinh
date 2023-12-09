@@ -208,6 +208,12 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         String maHoaDon = Static.scanner.nextLine();
 
         int index = timKiem(maHoaDon);
+
+        if (index == -1) {
+            System.out.println("Ma hoa don khong dung!");
+            return;
+        }
+
         System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
         dshd[index].xuat();
 

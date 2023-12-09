@@ -156,6 +156,12 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
         String maNhaSanXuat = Static.scanner.nextLine();
 
         int index = timKiem(maNhaSanXuat);
+
+        if (index == -1) {
+            System.out.println("Ma nha san xuat khong dung!");
+            return;
+        }
+        
         System.out.format(" %-20s | %-20s%n", "Ma nha san xuat", "Ten nha san xuat");
         dsnsx[index].xuat();
         if (index == -1) {
