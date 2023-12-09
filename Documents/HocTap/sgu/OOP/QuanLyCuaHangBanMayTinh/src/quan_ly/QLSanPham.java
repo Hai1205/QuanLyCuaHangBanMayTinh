@@ -15,6 +15,8 @@ public class QLSanPham {
     }
 
     public void menu() {
+        dssp.xuatFile();
+        
         Static.clearScreen();
 
         int choice;
@@ -55,6 +57,8 @@ public class QLSanPham {
     }
 
     public void menuUser() {
+        dssp.xuatFile();
+        
         Static.clearScreen();
 
         int choice;

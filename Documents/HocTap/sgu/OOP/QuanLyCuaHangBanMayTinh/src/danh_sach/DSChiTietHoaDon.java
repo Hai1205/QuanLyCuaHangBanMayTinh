@@ -20,25 +20,22 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
     public DSChiTietHoaDon() {
         n = 0;
         dscthd = new ChiTietHoaDon[n];
-        
-        dssp = new DSSanPham();
-        dspbh =  new DSPhieuBaoHanh();
 
+        dssp = new DSSanPham();
+        dspbh = new DSPhieuBaoHanh();
+
+        dssp.xuatFile();
         xuatFile();
     }
 
     public DSChiTietHoaDon(int n) {
         setN(n);
         dscthd = new ChiTietHoaDon[n];
-
-        xuatFile();
     }
 
     public DSChiTietHoaDon(DSChiTietHoaDon other) {
         this.n = other.n;
         this.dscthd = Arrays.copyOf(other.dscthd, n);
-
-        xuatFile();
     }
 
     public void setMHD(String maHoaDon) {
@@ -76,13 +73,14 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
         int m = Static.checkInputIsInt();
         Static.scanner.nextLine();
 
-        for (int i = 0; i < m; i++) {       
+        for (int i = 0; i < m; i++) {
             them();
         }
     }
 
     public void xuat() {
-        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham", "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
+        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham",
+                "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
         for (ChiTietHoaDon i : dscthd) {
             i.xuat();
         }
@@ -130,7 +128,7 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
 
     public void them() {
         Static.clearScreen();
-        
+
         dscthd = Arrays.copyOf(dscthd, n + 1);
         System.out.println("Thong tin chi tiet hoa don: ");
         dscthd[n] = new ChiTietHoaDon();
@@ -170,7 +168,6 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
 
         dssp.giamSoLuong(maSanPham, dscthd[n++].getSoLuongMua());
 
-        dssp.nhapFile(false);
         nhapFile(false);
     }
 
@@ -185,14 +182,18 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
 
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
-
         int index = timKiem(maHoaDon);
-        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham", "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
-        dscthd[index].xuat();
-        
+        timKiem(index);
+    }
+
+    public void timKiem(int index) {
         if (index == -1) {
-            System.out.println("Khong hop le!");
+            System.out.println("Ma hoa don khong dung!");
         }
+
+        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham",
+                "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
+        dscthd[index].xuat();
     }
 
     public int timKiem(String maHoaDon) {
@@ -339,35 +340,26 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
 
-        int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(maHoaDon);
     }
 
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            for (int i = index; i < n - 1; i++) {
-                dscthd[i] = dscthd[i + 1];
-            }
-            dscthd = Arrays.copyOf(dscthd, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma hoa don khong dung!");
         }
+
+        for (int i = index; i < n - 1; i++) {
+            dscthd[i] = dscthd[i + 1];
+        }
+        dscthd = Arrays.copyOf(dscthd, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
         nhapFile(false);
     }
 
     public void xoa(String maHoaDon) {
         int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void xoaTheoHoaDon(String maHoaDon) {
@@ -386,6 +378,10 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma hoa don khong dung!");
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -429,21 +425,11 @@ public class DSChiTietHoaDon implements DanhSach<ChiTietHoaDon> {
 
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
-
-        int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            sua(index);
-        }
+        sua(maHoaDon);
     }
 
     public void sua(String maHoaDon) {
         int index = timKiem(maHoaDon);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("Khong hop le!");
-        }
+        sua(index);
     }
 }

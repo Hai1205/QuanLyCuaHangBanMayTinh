@@ -73,7 +73,8 @@ public class DSNhanVien implements DanhSach<NhanVien> {
     }
 
     public void xuat() {
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma nhan vien", "Ho nhan vien", "Ten nhan vien", "Ngay sinh", "KPI", "Luong");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma nhan vien", "Ho nhan vien",
+                "Ten nhan vien", "Ngay sinh", "KPI", "Luong");
         for (NhanVien i : dsnv) {
             i.xuat();
         }
@@ -157,19 +158,19 @@ public class DSNhanVien implements DanhSach<NhanVien> {
 
         System.out.print("Ma nhan vien: ");
         String maNhanVien = Static.scanner.nextLine();
-
         int index = timKiem(maNhanVien);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma nhan vien khong dung!");
             return;
         }
-        
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma nhan vien", "Ho nhan vien", "Ten nhan vien", "Ngay sinh", "KPI", "Luong");
+
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma nhan vien", "Ho nhan vien",
+                "Ten nhan vien", "Ngay sinh", "KPI", "Luong");
         dsnv[index].xuat();
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        }
     }
 
     public int timKiem(String maNhanVien) {
@@ -324,36 +325,28 @@ public class DSNhanVien implements DanhSach<NhanVien> {
 
         System.out.print("Ma nhan vien: ");
         String maNhanVien = Static.scanner.nextLine();
-
-        int index = timKiem(maNhanVien);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(maNhanVien);
     }
 
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            for (int i = index; i < n - 1; i++) {
-                dsnv[i] = dsnv[i + 1];
-            }
-            dsnv = Arrays.copyOf(dsnv, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma nhan vien khong dung!");
+            return;
         }
+
+        for (int i = index; i < n - 1; i++) {
+            dsnv[i] = dsnv[i + 1];
+        }
+        dsnv = Arrays.copyOf(dsnv, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
 
     public void xoa(String maNhanVien) {
         int index = timKiem(maNhanVien);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void giamKPI(String maNhanVien) {
@@ -366,6 +359,11 @@ public class DSNhanVien implements DanhSach<NhanVien> {
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma nhan vien khong dung!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -421,22 +419,12 @@ public class DSNhanVien implements DanhSach<NhanVien> {
 
         System.out.print("Ma phieu nhap: ");
         String maNhanVien = Static.scanner.nextLine();
-
-        int index = timKiem(maNhanVien);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            sua(index);
-        }
+        xoa(maNhanVien);
     }
 
     public void sua(String maNhanVien) {
         int index = timKiem(maNhanVien);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("Khong hop le!");
-        }
+        sua(index);
     }
 
     public void capNhatMaNhanVien(String maNhanVienCu, String maNhanVienMoi) {
@@ -446,5 +434,37 @@ public class DSNhanVien implements DanhSach<NhanVien> {
             }
         }
         nhapFile(false);
+    }
+
+    public void thongKe() {
+        Static.clearScreen();
+
+        System.out.println("Nhan vien co: " + n + "phieu nhap");
+        {
+            long tongLuong = 0;
+            for (int i = 0; i < n; i++) {
+                tongLuong += dsnv[i].getLuong();
+            }
+            double luongTrungBinh = (double) tongLuong / n;
+            System.out.println("Luong trung binh cua nhan vien la: " + luongTrungBinh);
+
+            int indexMaxLuong = 0;
+            for (int i = 1; i < n; i++) {
+                if (dsnv[i].getLuong() > dsnv[indexMaxLuong].getLuong()) {
+                    indexMaxLuong = i;
+                }
+            }
+            System.out.println("Nhan vien co luong cao nhat la:");
+            dsnv[indexMaxLuong].xuat();
+
+            int indexMinLuong = 0;
+            for (int i = 1; i < n; i++) {
+                if (dsnv[i].getLuong() < dsnv[indexMinLuong].getLuong()) {
+                    indexMinLuong = i;
+                }
+            }
+            System.out.println("Nhan vien co luong thap nhat la:");
+            dsnv[indexMinLuong].xuat();
+        }
     }
 }

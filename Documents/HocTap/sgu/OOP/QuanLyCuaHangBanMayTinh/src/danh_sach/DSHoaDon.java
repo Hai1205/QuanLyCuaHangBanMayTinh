@@ -33,22 +33,18 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         dscthd = new DSChiTietHoaDon();
         dsnv = new DSNhanVien();
         dskh = new DSKhachHang();
-        
+
         xuatFile();
     }
 
     public DSHoaDon(int n) {
         setN(n);
         dshd = new HoaDon[n];
-
-        xuatFile();
     }
 
     public DSHoaDon(DSHoaDon other) {
         this.n = other.n;
         this.dshd = Arrays.copyOf(other.dshd, n);
-
-        xuatFile();
     }
 
     public void setMKH(String maKhachHang) {
@@ -81,14 +77,15 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         System.out.print("So luong hoa don: ");
         int m = Static.checkInputIsInt();
         Static.scanner.nextLine();
-        
+
         for (int i = 0; i < m; i++) {
             them();
         }
     }
 
     public void xuat() {
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                "Ngay mua", "Tong tien/hoa don");
         for (HoaDon i : dshd) {
             i.xuat();
         }
@@ -206,26 +203,26 @@ public class DSHoaDon implements DanhSach<HoaDon> {
 
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
-
         int index = timKiem(maHoaDon);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma hoa don khong dung!");
             return;
         }
 
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                "Ngay mua", "Tong tien/hoa don");
         dshd[index].xuat();
 
         System.out.println("+ Chi tiet hoa don: ");
-        ChiTietHoaDon[] ds = dscthd.timKiemDStheoMHD(maHoaDon);
-        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham", "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
+        ChiTietHoaDon[] ds = dscthd.timKiemDStheoMHD(dshd[index].getMaHoaDon());
+        System.out.format(" %-15s | %-15s | %-15s | %-15s | %-15s | %-15s%n", "Ma hoa don", "Ma san pham",
+                "Ma bao hanh", "So luong mua", "Don gia", "Thanh tien");
         for (ChiTietHoaDon i : ds) {
             i.xuat();
-        }
-
-        if (index == -1) {
-            System.out.println("Khong hop le!");
         }
     }
 
@@ -325,7 +322,8 @@ public class DSHoaDon implements DanhSach<HoaDon> {
     public void xuatDStheoMKH(String maKhachHang) {
         HoaDon[] ds = timKiemDStheoMKH(maKhachHang);
         if (ds != null) {
-            System.out.format("%-20s|%-20s|%-20s|%-20s|%-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                    "Ngay mua", "Tong tien/hoa don");
             for (HoaDon i : ds) {
                 i.xuat();
             }
@@ -387,58 +385,50 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         if (count == 0)
             return null;
         return Arrays.copyOf(ds, count);
-    }    
+    }
 
     public void xoa() {
         Static.clearScreen();
 
         System.out.print("Ma hoa don: ");
         String maHoaDon = Static.scanner.nextLine();
-
-        int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(maHoaDon);
     }
+
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            HoaDon hd = dshd[index];
-            if (hd != null) {
-                ChiTietHoaDon[] dsct = dscthd.timKiemDStheoMHD(hd.getMaHoaDon());
-                if (dsct != null) {
-                    for (ChiTietHoaDon ct : dsct) {
-                        if (ct != null) {
-                            dssp.tangSoLuong(ct.getMaSanPham(), ct.getSoLuongMua());
-                            dscthd.xoaTheoHoaDon(ct.getMaHoaDon());
-                        }
-                    }
-                }
-                dsnv.giamKPI(hd.getMaNhanVien());
-            }
-            for (int i = index; i < n - 1; i++) {
-                dshd[i] = dshd[i + 1];
-            }
-            dshd = Arrays.copyOf(dshd, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma hoa don khong dung!");
+            return;
         }
+
+        ChiTietHoaDon[] dsct = dscthd.timKiemDStheoMHD(dshd[index].getMaHoaDon());
+        for (ChiTietHoaDon i : dsct) {
+            if (i != null) {
+                dssp.tangSoLuong(i.getMaSanPham(), i.getSoLuongMua());
+                dscthd.xoaTheoHoaDon(i.getMaHoaDon());
+            }
+        }
+        dsnv.giamKPI(dshd[index].getMaNhanVien());
+        for (int i = index; i < n - 1; i++) {
+            dshd[i] = dshd[i + 1];
+        }
+        dshd = Arrays.copyOf(dshd, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
         nhapFile(false);
-    }    
-    
+    }
+
     public void xoa(String maHoaDon) {
         int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma hoa don khong dung!");
+            return;
+        }
+
         int choice;
         do {
             System.out.println("---- Chon muc can sua: ----");
@@ -492,22 +482,12 @@ public class DSHoaDon implements DanhSach<HoaDon> {
 
         System.out.print("Ma phieu nhap: ");
         String maHoaDon = Static.scanner.nextLine();
-
-        int index = timKiem(maHoaDon);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            sua(index);
-        }
+        sua(maHoaDon);
     }
 
     public void sua(String maHoaDon) {
         int index = timKiem(maHoaDon);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("khong hop le!");
-        }
+        sua(index);
     }
 
     public void thongKe() {
@@ -559,7 +539,8 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         Static.clearScreen();
 
         int tong = 0;
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                "Ngay mua", "Tong tien/hoa don");
         for (HoaDon i : dshd) {
             i.xuat();
             tong += i.getTongTien();
@@ -666,7 +647,7 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         }
         System.out.println("Tong tien: " + tong);
     }
-    
+
     private void TKtheoTG() {
         Static.clearScreen();
 
@@ -685,7 +666,8 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         } else {
             int tong = 0;
             int count = 0;
-            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                    "Ngay mua", "Tong tien/hoa don");
             for (HoaDon hd : ds) {
                 hd.xuat();
                 tong += hd.getTongTien();
@@ -709,7 +691,8 @@ public class DSHoaDon implements DanhSach<HoaDon> {
         } else {
             int count = 0;
             int tong = 0;
-            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang", "Ngay mua", "Tong tien/hoa don");
+            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma hoa don", "Ma nhan vien", "Ma khach hang",
+                    "Ngay mua", "Tong tien/hoa don");
             for (HoaDon hd : ds) {
                 hd.xuat();
                 tong += hd.getTongTien();

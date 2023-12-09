@@ -122,7 +122,7 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
         dsnsx[n] = new NhaSanXuat();
 
         boolean daTonTai;
-        
+
         if (maNhaSanXuat == null || maNhaSanXuat.isEmpty()) {
             do {
                 System.out.print("Ma nha san xuat: ");
@@ -135,7 +135,7 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
                 }
             } while (daTonTai);
         }
-        
+
         dsnsx[n].setMNSX(maNhaSanXuat);
         dsnsx[n++].nhap();
 
@@ -154,19 +154,18 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
 
         System.out.print("Ma nha san xuat: ");
         String maNhaSanXuat = Static.scanner.nextLine();
-
         int index = timKiem(maNhaSanXuat);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma nha san xuat khong dung!");
             return;
         }
-        
+
         System.out.format(" %-20s | %-20s%n", "Ma nha san xuat", "Ten nha san xuat");
         dsnsx[index].xuat();
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        }
     }
 
     public int timKiem(String maNhaSanXuat) {
@@ -227,39 +226,36 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
 
         System.out.print("Ma nha san xuat: ");
         String maNhaSanXuat = Static.scanner.nextLine();
-
-        int index = timKiem(maNhaSanXuat);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            xoa(index);
-        }
+        xoa(maNhaSanXuat);
     }
 
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            for (int i = index; i < n - 1; i++) {
-                dsnsx[i] = dsnsx[i + 1];
-            }
-            dsnsx = Arrays.copyOf(dsnsx, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong tim thay!");
+        if (index == -1) {
+            System.out.println("Ma nha san xuat khong dung!");
+            return;
         }
+
+        for (int i = index; i < n - 1; i++) {
+            dsnsx[i] = dsnsx[i + 1];
+        }
+        dsnsx = Arrays.copyOf(dsnsx, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
 
     public void xoa(String maNhaSanXuat) {
         int index = timKiem(maNhaSanXuat);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma nha san xuat khong dung!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -297,23 +293,14 @@ public class DSNhaSanXuat implements DanhSach<NhaSanXuat> {
 
         System.out.print("Ma nha san xuat: ");
         String maNhaSanXuat = Static.scanner.nextLine();
-        int index = timKiem(maNhaSanXuat);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        }
-        else {
-            sua(index);
-        }
+        sua(maNhaSanXuat);
     }
 
     public void sua(String maNhaSanXuat) {
         int index = timKiem(maNhaSanXuat);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("Khong hop le!");
-        }
+        sua(index);
     }
+
     public void capNhatMaNhaSanXuat(String maNhaSanXuatCu, String maNhaSanXuatMoi) {
         for (NhaSanXuat nsx : dsnsx) {
             if (nsx.getMNSX().equals(maNhaSanXuatCu)) {

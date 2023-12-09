@@ -74,7 +74,7 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
 
     public void nhap() {
         Static.clearScreen();
-        
+
         System.out.print("So luong phieu bao hanh: ");
         int m = Static.checkInputIsInt();
         Static.scanner.nextLine();
@@ -85,7 +85,8 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
     }
 
     public void xuat() {
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma bao hanh", "Ma san pham", "Ma hoa don", "Ma khach hang", "Thoi gian bao hanh");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma bao hanh", "Ma san pham", "Ma hoa don",
+                "Ma khach hang", "Thoi gian bao hanh");
         for (PhieuBaoHanh i : dspbh) {
             i.xuat();
         }
@@ -142,7 +143,7 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
         dspbh[n].setMaHoaDon(maHoaDon);
         dspbh[n].setMaKhachHang(maKhachHang);
         dspbh[n++].nhap();
-        
+
         nhapFile(false);
     }
 
@@ -158,19 +159,19 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
 
         System.out.print("Ma phieu bao hanh: ");
         String maBaoHanh = Static.scanner.nextLine();
-
         int index = timKiem(maBaoHanh);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma phieu bao hanh khong dung!");
             return;
         }
 
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma bao hanh", "Ma san pham", "Ma hoa don", "Ma khach hang", "Thoi gian bao hanh");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma bao hanh", "Ma san pham", "Ma hoa don",
+                "Ma khach hang", "Thoi gian bao hanh");
         dspbh[index].xuat();
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        }
     }
 
     public int timKiem(String maBaoHanh) {
@@ -297,42 +298,36 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
 
         System.out.print("Ma phieu bao hanh: ");
         String maBaoHanh = Static.scanner.nextLine();
-
-        int index = timKiem(maBaoHanh);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
-        nhapFile(false);
+        xoa(maBaoHanh);
     }
-    
+
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-
-            for (int i = index; i < n - 1; i++) {
-                dspbh[i] = dspbh[i + 1];
-            }
-            dspbh = Arrays.copyOf(dspbh, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma phieu bao hanh khong dung!");
+            return;
         }
+
+        for (int i = index; i < n - 1; i++) {
+            dspbh[i] = dspbh[i + 1];
+        }
+        dspbh = Arrays.copyOf(dspbh, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
 
     public void xoa(String maBaoHanh) {
         int index = timKiem(maBaoHanh);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma phieu bao hanh khong dung!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -388,21 +383,11 @@ public class DSPhieuBaoHanh implements DanhSach<PhieuBaoHanh> {
 
         System.out.print("Ma phieu bao hanh: ");
         String maBaoHanh = Static.scanner.nextLine();
-
-        int index = timKiem(maBaoHanh);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            sua(index);
-        }
+        sua(maBaoHanh);
     }
 
     public void sua(String maBaoHanh) {
         int index = timKiem(maBaoHanh);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("khong tim thay!");
-        }
+        sua(index);
     }
 }

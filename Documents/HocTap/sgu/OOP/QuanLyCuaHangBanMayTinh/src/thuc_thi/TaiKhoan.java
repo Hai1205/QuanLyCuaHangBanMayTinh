@@ -199,7 +199,7 @@ public class TaiKhoan {
                     case 1:
                         do {
                             Static.clearScreen();
-                            dssp.xuatFile();
+                            // dssp.xuatFile();
 
                             System.out.println("---- " + username + " ----");
                             System.out.println("1. San pham");
@@ -283,8 +283,6 @@ public class TaiKhoan {
         int choice;
             do {
                 Static.clearScreen();
-
-                dssp.xuatFile();
                 
                 System.out.println("---- " + username + " ----");
                 System.out.println("1. San pham");
@@ -345,19 +343,20 @@ public class TaiKhoan {
     private boolean checkUsername(String username) {
         try {
             FileReader fr = new FileReader("../src/data_base/DSTaiKhoan.txt");
-            BufferedReader br = new BufferedReader(fr);
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] txt = line.split(", ");
-                if (txt.length == 3 && txt[0].equals(username)) {
-                    setUsername(username);
-                    setPassword(txt[1]);
-                    setMaKhachHang(txt[2]);
-                    return true;
+            try (BufferedReader br = new BufferedReader(fr)) {
+                String line = "";
+                while ((line = br.readLine()) != null) {
+                    String[] txt = line.split(", ");
+                    if (txt.length == 3 && txt[0].equals(username)) {
+                        setUsername(username);
+                        setPassword(txt[1]);
+                        setMaKhachHang(txt[2]);
+                        return true;
+                    }
                 }
-            }
 
-            br.close();
+                br.close();
+            }
             fr.close();
         } catch (IOException e) {
             e.printStackTrace();

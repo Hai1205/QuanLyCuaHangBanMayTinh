@@ -11,6 +11,8 @@ public class ChiTietHoaDon {
 
     public ChiTietHoaDon() {
         dssp = new DSSanPham();
+
+        dssp.xuatFile();
     }
 
     public ChiTietHoaDon(String maHoaDon, String maSanPham, String maBaoHanh, int soLuongMua, int donGia, int thanhTien) {

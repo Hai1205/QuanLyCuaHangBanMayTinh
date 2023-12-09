@@ -64,8 +64,9 @@ public class QLHoaDon {
                 System.out.println("1. Mua hang");
                 System.out.println("2. Lich su mua hang");
                 System.out.println("3. Tra cuu hoa don");
-                System.out.println("4.Thoat");
-                System.out.print("Chon chuc nang (1-4): ");
+                System.out.println("4. Tra hang");
+                System.out.println("5.Thoat");
+                System.out.print("Chon chuc nang (1-5): ");
                 choice = Static.checkInputIsInt();
                 Static.scanner.nextLine();
 
@@ -80,12 +81,14 @@ public class QLHoaDon {
                     case 3: 
                         dshd.timKiem();
                         break;
-                    case 4: 
+                    case 4:
+                        dshd.xoa();
+                    case 5: 
                         break;
                     default:
                         System.out.println("Lua chon khong hop le! Vui long chon lai!");
                 }
-            } while (choice != 4);
+            } while (choice != 5);
         }
     }
 }

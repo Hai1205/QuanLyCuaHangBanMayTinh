@@ -62,7 +62,7 @@ public class DSKhachHang implements DanhSach<KhachHang> {
 
     public void nhap() {
         Static.clearScreen();
-        
+
         System.out.print("So luong khach hang: ");
         int m = Static.checkInputIsInt();
         Static.scanner.nextLine();
@@ -73,7 +73,8 @@ public class DSKhachHang implements DanhSach<KhachHang> {
     }
 
     public void xuat() {
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma khach hang", "Ho khach hang", "Ten khach hang", "Dia chi", "So dien thoai");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma khach hang", "Ho khach hang",
+                "Ten khach hang", "Dia chi", "So dien thoai");
         for (KhachHang i : dskh) {
             i.xuat();
         }
@@ -83,7 +84,7 @@ public class DSKhachHang implements DanhSach<KhachHang> {
         try {
             FileWriter fw = new FileWriter("../src/data_base/DSKhachHang.txt", khongXoaHetDuLieuCu);
             BufferedWriter bw = new BufferedWriter(fw);
-            
+
             for (KhachHang i : dskh) {
                 bw.write(i.toString());
                 bw.newLine();
@@ -121,25 +122,25 @@ public class DSKhachHang implements DanhSach<KhachHang> {
 
     public void them() {
         Static.clearScreen();
-        
+
         dskh = Arrays.copyOf(dskh, n + 1);
         System.out.println("Thong tin khach hang: ");
         dskh[n] = new KhachHang();
-        
+
         boolean daTonTai;
-        
+
         if (maKhachHang.isEmpty()) {
             do {
-            System.out.print("Ma khach hang: ");
-            maKhachHang = Static.scanner.nextLine();
-            daTonTai = (timKiem(maKhachHang) != -1);
-            
-            if (daTonTai) {
-                System.out.println("Ma khach hang da ton tai! Xin nhap lai!");
-            }
-        } while (daTonTai);
+                System.out.print("Ma khach hang: ");
+                maKhachHang = Static.scanner.nextLine();
+                daTonTai = (timKiem(maKhachHang) != -1);
+
+                if (daTonTai) {
+                    System.out.println("Ma khach hang da ton tai! Xin nhap lai!");
+                }
+            } while (daTonTai);
         }
-        
+
         dskh[n].setMaKhachHang(maKhachHang);
         dskh[n++].nhap();
         nhapFile(false);
@@ -157,19 +158,19 @@ public class DSKhachHang implements DanhSach<KhachHang> {
 
         System.out.print("Ma khach hang: ");
         String maKhachHang = Static.scanner.nextLine();
-
         int index = timKiem(maKhachHang);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
-            System.out.println("Ma khach hang khong dung!");
+            System.out.println("Ma khach hang khong dug!");
             return;
         }
-        
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma khach hang", "Ho khach hang", "Ten khach hang", "Dia chi", "So dien thoai");
+
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma khach hang", "Ho khach hang",
+                "Ten khach hang", "Dia chi", "So dien thoai");
         dskh[index].xuat();
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        }
     }
 
     public int timKiem(String maKhachHang) {
@@ -293,42 +294,39 @@ public class DSKhachHang implements DanhSach<KhachHang> {
 
     public void xoa() {
         Static.clearScreen();
-        
+
         System.out.print("Ma khach hang: ");
         String maKhachHang = Static.scanner.nextLine();
-
-        int index = timKiem(maKhachHang);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            xoa(index);
-        }
+        xoa(maKhachHang);
     }
 
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            for (int i = index; i < n - 1; i++) {
-                dskh[i] = dskh[i + 1];
-            }
-            dskh = Arrays.copyOf(dskh, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong tim thay!");
+        if (index == -1) {
+            System.out.println("Ma khach hang khong dug!");
+            return;
         }
+
+        for (int i = index; i < n - 1; i++) {
+            dskh[i] = dskh[i + 1];
+        }
+        dskh = Arrays.copyOf(dskh, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
 
     public void xoa(String maKhachHang) {
         int index = timKiem(maKhachHang);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma khach hang khong dug!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -384,21 +382,11 @@ public class DSKhachHang implements DanhSach<KhachHang> {
 
         System.out.print("Ma khach hang: ");
         String maKhachHang = Static.scanner.nextLine();
-
-        int index = timKiem(maKhachHang);
-        if (index == -1) {
-            System.out.println("Khong tim thay!");
-        } else {
-            sua(index);
-        }
+        sua(maKhachHang);
     }
 
     public void sua(String maKhachHang) {
         int index = timKiem(maKhachHang);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("khong tim thay!");
-        }
+        sua(index);
     }
 }

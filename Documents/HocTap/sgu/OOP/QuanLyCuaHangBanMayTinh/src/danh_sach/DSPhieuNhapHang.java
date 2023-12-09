@@ -31,7 +31,7 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         dsctpnh = new DSChiTietPhieuNhapHang();
         dsnsx = new DSNhaSanXuat();
         dsnv = new DSNhanVien();
-        
+
         xuatFile();
     }
 
@@ -82,7 +82,8 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
     }
 
     public void xuat() {
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien",
+                "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
         for (PhieuNhapHang i : dspnh) {
             i.xuat();
         }
@@ -176,7 +177,7 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         dsctpnh.setMPN(maPhieuNhap);
         dsctpnh.setMNSX(maNhaSanXuat);
         dsctpnh.nhap();
-        
+
         dspnh[n++].setTT();
 
         nhapFile(false);
@@ -194,26 +195,26 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
 
         System.out.print("Ma phieu nhap hang: ");
         String maPhieuNhap = Static.scanner.nextLine();
-
         int index = timKiem(maPhieuNhap);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma phieu nhap hang khong dung!");
             return;
         }
-        
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
+
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien",
+                "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
         dspnh[index].xuat();
 
-        System.out.println("+ Chi tiet phieu nhap hang: " );
-        ChiTietPhieuNhapHang[] ds = dsctpnh.timKiemDStheoMPNH(maPhieuNhap);
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap hang", "Ma san pham", "So luong nhap hang", "Don gia nhap hang", "Tong tien nhap hang");
+        System.out.println("+ Chi tiet phieu nhap hang: ");
+        ChiTietPhieuNhapHang[] ds = dsctpnh.timKiemDStheoMPNH(dspnh[index].getMPNH());
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap hang", "Ma san pham",
+                "So luong nhap hang", "Don gia nhap hang", "Tong tien nhap hang");
         for (ChiTietPhieuNhapHang i : ds) {
             i.xuat();
-        }
-
-        if (index == -1) {
-            System.out.println("Khong hop le!");
         }
     }
 
@@ -372,61 +373,52 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         if (count == 0)
             return null;
         return Arrays.copyOf(ds, count);
-    } 
+    }
 
     public void xoa() {
         Static.clearScreen();
 
         System.out.print("Ma phieu nhap hang: ");
         String maPhieuNhap = Static.scanner.nextLine();
-
-        int index = timKiem(maPhieuNhap);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(maPhieuNhap);
     }
+
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            PhieuNhapHang pnh = dspnh[index];
-            if (pnh != null) {
-                ChiTietPhieuNhapHang[] chiTiet = dsctpnh.timKiemDStheoMPNH(pnh.getMPNH());
-                if (chiTiet != null) {
-                    for (ChiTietPhieuNhapHang ct : chiTiet) {
-                        if (ct != null) {
-                            dssp.giamSoLuong(ct.getMSP(), ct.getSL());
-                            dsctpnh.xoa(ct.getMPNH());
-                        }
-                    }
-                }
-            }
-            for (int i = index; i < n - 1; i++) {
-                dspnh[i] = dspnh[i + 1];
-            }
-            dspnh = Arrays.copyOf(dspnh, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma phieu nhap hang khong dung!");
+            return;
         }
+
+        ChiTietPhieuNhapHang[] chiTiet = dsctpnh.timKiemDStheoMPNH(dspnh[index].getMPNH());
+        for (ChiTietPhieuNhapHang i : chiTiet) {
+            dssp.giamSoLuong(i.getMSP(), i.getSL());
+            dsctpnh.xoa(i.getMPNH());
+        }
+        for (int i = index; i < n - 1; i++) {
+            dspnh[i] = dspnh[i + 1];
+        }
+        dspnh = Arrays.copyOf(dspnh, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
-    
+
     public void xoa(String maPhieuNhap) {
         int index = timKiem(maPhieuNhap);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(index);
     }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma phieu nhap hang khong dung!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
-            
+
             System.out.println("---- Chon muc can sua: ----");
             System.out.println("1. Ma phieu nhap");
             System.out.println("2. Ngay nhap hang");
@@ -484,22 +476,12 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
 
         System.out.print("Ma phieu nhap: ");
         String maPhieuNhap = Static.scanner.nextLine();
-
-        int index = timKiem(maPhieuNhap);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            sua(index);
-        }
+        sua(maPhieuNhap);
     }
 
     public void sua(String maPhieuNhap) {
         int index = timKiem(maPhieuNhap);
-        if (index != -1) {
-            sua(index);
-        } else {
-            System.out.println("Khong hop le!");
-        }
+        sua(index);
     }
 
     public void thongKe() {
@@ -551,7 +533,8 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         Static.clearScreen();
 
         int tong = 0;
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
+        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien",
+                "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
         for (PhieuNhapHang i : dspnh) {
             i.xuat();
             tong += i.getTT();
@@ -564,20 +547,20 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         Static.clearScreen();
 
         System.out.println("Thong ke theo nha san xuat");
-    
+
         Set<String> nhaSanXuat = new HashSet<>();
-    
+
         int tong = 0;
 
         System.out.format(" %-15s | %-20s | %-20s%n", "Nha san xuat", "So tien da chi", "So luong don nhap hang");
         for (int i = 0; i < n; i++) {
             String maNhaSanXuat = dspnh[i].getMNSX();
-    
+
             // Nếu maNhaSanXuat đã được xử lý, bỏ qua
             if (nhaSanXuat.contains(maNhaSanXuat)) {
                 continue;
             }
-    
+
             int count = 0;
             int sum = 0;
             for (int j = 0; j < n; j++) {
@@ -588,14 +571,13 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
             }
             System.out.println("-----------------+----------------------+------------------------");
             System.out.format(" %-15s | %-20s | %-20s%n", maNhaSanXuat, sum, count);
-    
+
             // Đánh dấu maNhaSanXuat đã được xử lý
             nhaSanXuat.add(maNhaSanXuat);
             tong += sum;
         }
         System.out.println("Tong tien: " + tong);
     }
-    
 
     private void TKtheoNV() {
         Static.clearScreen();
@@ -666,7 +648,7 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         }
         System.out.println("Tong tien: " + tong);
     }
-    
+
     private void TKtheoTG() {
         Static.clearScreen();
 
@@ -687,7 +669,8 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         } else {
             int tong = 0;
             int count = 0;
-            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
+            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien",
+                    "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
             for (PhieuNhapHang i : ds) {
                 i.xuat();
                 tong += i.getTT();
@@ -713,7 +696,8 @@ public class DSPhieuNhapHang implements DanhSach<PhieuNhapHang> {
         } else {
             int count = 0;
             int tong = 0;
-            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien", "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
+            System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma phieu nhap", "Ma nhan vien",
+                    "Ma nha san xuat", "Ngay nhap hang", "Tong tien/don nhap hang");
             for (PhieuNhapHang i : ds) {
                 i.xuat();
                 tong += i.getTT();

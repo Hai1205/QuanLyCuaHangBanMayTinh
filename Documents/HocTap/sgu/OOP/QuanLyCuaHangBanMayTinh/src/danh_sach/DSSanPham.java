@@ -21,24 +21,20 @@ public class DSSanPham implements DanhSach<SanPham> {
     public DSSanPham() {
         dssp = new SanPham[0];
         n = 0;
-        
+
         dsctsp = new DSChiTietSanPham();
 
-        xuatFile();
+        // xuatFile();
     }
 
     public DSSanPham(int n) {
         setN(n);
         dssp = new SanPham[n];
-
-        xuatFile();
     }
 
     public DSSanPham(DSSanPham other) {
         this.n = other.n;
         this.dssp = Arrays.copyOf(other.dssp, n);
-
-        xuatFile();
     }
 
     public void setMSP(String maSanPham) {
@@ -83,7 +79,7 @@ public class DSSanPham implements DanhSach<SanPham> {
         System.out.print("So loai san pham: ");
         int m = Static.checkInputIsInt();
         Static.scanner.nextLine();
-        
+
         for (int i = 0; i < m; i++) {
             them();
         }
@@ -91,9 +87,10 @@ public class DSSanPham implements DanhSach<SanPham> {
 
     @Override
     public void xuat() {
-        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n","Ma san pham", "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
+        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n", "Ma san pham",
+                "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
         for (SanPham i : dssp) {
-                i.xuat();
+            i.xuat();
         }
     }
 
@@ -157,7 +154,7 @@ public class DSSanPham implements DanhSach<SanPham> {
         System.out.print("Chon loai san pham (1. Laptop / 2. PC): ");
         int loaiSanPham = Static.scanner.nextInt();
         Static.scanner.nextLine();
-    
+
         SanPham x;
         if (maSanPham == null || maSanPham.isEmpty()) {
             boolean daTonTai;
@@ -172,7 +169,7 @@ public class DSSanPham implements DanhSach<SanPham> {
                 }
             } while (daTonTai);
         }
-    
+
         if (loaiSanPham == 1) {
             x = new LapTop();
         } else if (loaiSanPham == 2) {
@@ -181,19 +178,19 @@ public class DSSanPham implements DanhSach<SanPham> {
             System.out.println("khong hop le!");
             return;
         }
-    
+
         x.setMaSP(maSanPham);
         x.setSL(soLuong);
         x.nhap();
         them(x);
-        
+
         dsctsp.setMSP(maSanPham);
         dsctsp.setMNSX(maNhaSanXuat);
         dsctsp.them();
 
         nhapFile(false);
     }
-    
+
     @Override
     public void them(SanPham x) {
         dssp = Arrays.copyOf(dssp, n + 1);
@@ -205,24 +202,21 @@ public class DSSanPham implements DanhSach<SanPham> {
 
         System.out.print("Ma san pham: ");
         String maSanPham = Static.scanner.nextLine();
-
         int index = timKiem(maSanPham);
+        timKiem(index);
+    }
 
+    public void timKiem(int index) {
         if (index == -1) {
             System.out.println("Ma san pham khong dung!");
             return;
         }
-        
-        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n","Ma san pham", "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
+
+        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n", "Ma san pham",
+                "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
         dssp[index].xuat();
 
-        System.out.println("+ Chi tiet san pham: ");
-        System.out.format(" %-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-20s | %-20s%n", "Ma san pham", "Ma nha san xuat", "RAM", "ROM", "CPU", "Card do hoa", "He dieu hanh", "Nam san xuat");
-        dsctsp.getCTSP(index).xuat();
-
-        if (index == -1) {
-            System.out.println("khong hop le!");
-        }
+        dsctsp.timKiem(index);
     }
 
     public int timKiem(String maSanPham) {
@@ -275,7 +269,7 @@ public class DSSanPham implements DanhSach<SanPham> {
         if (count == 0)
             return null;
         return Arrays.copyOf(ds, count);
-    } 
+    }
 
     public void timKiemDStheoKhoangDG() {
         Static.clearScreen();
@@ -291,9 +285,10 @@ public class DSSanPham implements DanhSach<SanPham> {
             return;
         }
 
-        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n","Ma san pham", "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
+        System.out.printf(" %-20s | %-25s | %-15s | %-15s | %-15s | %-15s | %-15s | %-15s\n", "Ma san pham",
+                "Ten san pham", "Don vi tinh", "So luong", "Don gia", "Dung luong pin", "Loai", "Hang man hinh");
         for (SanPham i : ds) {
-                i.xuat();
+            i.xuat();
         }
     }
 
@@ -303,53 +298,60 @@ public class DSSanPham implements DanhSach<SanPham> {
 
         System.out.print("Ma san pham: ");
         String maSanPham = Static.scanner.nextLine();
-
-        int index = timKiem(maSanPham);
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            xoa(index);
-        }
+        xoa(maSanPham);
     }
+
+    public void xoa(String maSanPham) {
+        int index = timKiem(maSanPham);
+        xoa(index);
+    }
+
     @Override
     public void xoa(int index) {
-        if (index >= 0 && index < n) {
-            dsctsp.xoa(dssp[index].getMaSP());
-            for (int i = index; i < n - 1; i++) {
-                dssp[i] = dssp[i + 1];
-            }
-            dssp = Arrays.copyOf(dssp, n - 1);
-            n--;
-            System.out.println("Xoa thanh cong!");
-        } else {
-            System.out.println("Khong hop le!");
+        if (index == -1) {
+            System.out.println("Ma san pham khong dung!");
+            return;
         }
+
+        dsctsp.xoa(index);
+        for (int i = index; i < n - 1; i++) {
+            dssp[i] = dssp[i + 1];
+        }
+        dssp = Arrays.copyOf(dssp, n - 1);
+        n--;
+        System.out.println("Xoa thanh cong!");
+
         nhapFile(false);
     }
+
     public void giamSoLuong(String maSanPham, int soLuongGiam) {
         int index = timKiem(maSanPham);
         if (index != -1) {
             SanPham sp = dssp[index];
             int soLuongMoi = sp.getSL() - soLuongGiam;
             if (soLuongMoi < 0) {
-                soLuongMoi = 0; 
+                soLuongMoi = 0;
             }
             sp.setSL(soLuongMoi);
             nhapFile(false);
         }
     }
-    
+
     public void tangSoLuong(String maSanPham, int soLuongTang) {
         int index = timKiem(maSanPham);
         if (index != -1) {
             SanPham sp = dssp[index];
-            int soLuongMoi = sp.getSL() + soLuongTang;
-            sp.setSL(soLuongMoi);
+            sp.setSL(sp.getSL() + soLuongTang);
             nhapFile(false);
         }
-    }  
+    }
 
     public void sua(int index) {
+        if (index == -1) {
+            System.out.println("Ma san pham khong dung!");
+            return;
+        }
+
         int choice;
         do {
             Static.clearScreen();
@@ -426,18 +428,17 @@ public class DSSanPham implements DanhSach<SanPham> {
         nhapFile(false);
     }
 
+    public void sua(String maSanPham) {
+        int index = timKiem(maSanPham);
+        sua(index);
+    }
+
     @Override
     public void sua() {
         Static.clearScreen();
 
         System.out.print("Ma san pham: ");
         String maSanPham = Static.scanner.nextLine();
-        int index = timKiem(maSanPham);
-
-        if (index == -1) {
-            System.out.println("Khong hop le!");
-        } else {
-            sua(index);
-        }
+        sua(maSanPham);
     }
 }

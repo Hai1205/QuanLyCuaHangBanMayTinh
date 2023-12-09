@@ -4,9 +4,10 @@ import danh_sach.*;
 import thuc_thi.Static;
 
 public class QLPhieuNhapHang {
-    private DSPhieuNhapHang dspnh = new DSPhieuNhapHang();
+    private DSPhieuNhapHang dspnh;
 
     public QLPhieuNhapHang() {
+        dspnh = new DSPhieuNhapHang();
     }
 
     public QLPhieuNhapHang(DSPhieuNhapHang dspnh) {
@@ -15,7 +16,6 @@ public class QLPhieuNhapHang {
 
     public void menu() {
         Static.clearScreen();
-        
         int choice;
         do {
             System.out.println("---- Phieu nhap hang ----");

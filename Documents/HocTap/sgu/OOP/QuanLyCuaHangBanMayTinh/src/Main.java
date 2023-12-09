@@ -1,32 +1,41 @@
 import danh_sach.*;
 import quan_ly.*;
+import thanh_phan.ChiTietHoaDon;
 import thuc_thi.*;
 
 public class Main {
     public static void main(String[] args) {
-        // DSChiTietHoaDon dscthd = new DSChiTietHoaDon();
+        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        DSChiTietHoaDon dscthd = new DSChiTietHoaDon();
         // dscthd.xuat();
-        // DSChiTietPhieuNhapHang dsctpnh = new DSChiTietPhieuNhapHang();
+        DSChiTietPhieuNhapHang dsctpnh = new DSChiTietPhieuNhapHang();
         // dsctpnh.xuat();
         // DSChiTietSanPham dsctsp = new DSChiTietSanPham();
         // dsctsp.xuat();
         DSHoaDon dshd = new DSHoaDon();
+        // dshd.them();
         // dshd.thongKe();
         // dshd.xuat();
-        DSKhachHang dskh = new DSKhachHang();
+        // DSKhachHang dskh = new DSKhachHang();
         // dskh.xuat();
-        DSNhanVien dsnv = new DSNhanVien();
+        // DSNhanVien dsnv = new DSNhanVien();
         // dsnv.xuat();
-        DSNhaSanXuat dsnsx = new DSNhaSanXuat();
+        // DSNhaSanXuat dsnsx = new DSNhaSanXuat();
         // dsnsx.xuat();
-        DSPhieuBaoHanh dspbh = new DSPhieuBaoHanh();
+        // DSPhieuBaoHanh dspbh = new DSPhieuBaoHanh();
         // dspbh.xuat();
         DSPhieuNhapHang dspnh = new DSPhieuNhapHang();
+        // dspnh.timKiem();
+        // dspnh.xoa();
+        // dspnh.sua();
         // dspnh.them();
         // dspnh.xoa();
         // dspnh.thongKe();
         // dspnh.xuat();
         DSSanPham dssp = new DSSanPham();
+        // dssp.timKiem();
+        // dssp.xoa();
+        // dssp.sua();
         // dssp.them();
         // dssp.timKiemDStheoKhoangDG();
         // dssp.xuat();
@@ -39,10 +48,10 @@ public class Main {
         // QLNhanVien qlnv = new QLNhanVien();
         // QLNhaSanXuat qlnsx = new QLNhaSanXuat();
         // QLPhieuBaoHanh qlpbh = new QLPhieuBaoHanh();
-        // QLPhieuNhapHang qlpnh = new QLPhieuNhapHang();
+        QLPhieuNhapHang qlpnh = new QLPhieuNhapHang();
         // dssp.xuat();
         // qlpnh.menu();
-        // QLSanPham qlsp = new QLSanPham();
+        QLSanPham qlsp = new QLSanPham();
         // qlsp.menu();
 
 
